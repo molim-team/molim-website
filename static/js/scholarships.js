@@ -1,0 +1,63 @@
+let allScholarships = [];
+
+// جلب البيانات
+fetch('data/scholarships.json')
+  .then(res => res.json())
+  .then(data => {
+    allScholarships = data;
+    renderCards(allScholarships);
+  })
+  .catch(err => console.error('خطأ:', err));
+
+// عرض الكروت
+function renderCards(list) {
+  const grid = document.getElementById('scholarships-grid');
+  const noResults = document.getElementById('no-results');
+  grid.innerHTML = '';
+
+  if (list.length === 0) {
+    noResults.style.display = 'block';
+    return;
+  }
+
+  noResults.style.display = 'none';
+
+  list.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img class="card-flag" src="${s.flag}" alt="flag"/>
+      <h3>${s.name}</h3>
+      <p class="country">📍 ${s.country}</p>
+      <p class="degree">🎓 ${s.degree}</p>
+      <span class="status ${s.open ? 'open' : 'closed'}">
+        ${s.open ? '✅ التقديم مفتوح' : '🔴 التقديم مغلق'}
+      </span>
+      <p class="desc">${s.description}</p>
+      <p class="deadline">📅 آخر موعد: ${s.deadline}</p>
+      <a href="${s.link}" target="_blank">زيارة الموقع الرسمي ↗</a>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// فلترة
+function filterCards() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const status = document.getElementById('filter-status').value;
+  const degree = document.getElementById('filter-degree').value;
+
+  const filtered = allScholarships.filter(s => {
+    const matchSearch = s.name.includes(search) || s.country.includes(search);
+    const matchStatus = status === 'all' || (status === 'open' ? s.open : !s.open);
+    const matchDegree = degree === 'all' || s.degree.includes(degree);
+    return matchSearch && matchStatus && matchDegree;
+  });
+
+  renderCards(filtered);
+}
+
+// ربط الفلاتر بالأحداث
+document.getElementById('search').addEventListener('input', filterCards);
+document.getElementById('filter-status').addEventListener('change', filterCards);
+document.getElementById('filter-degree').addEventListener('change', filterCards);

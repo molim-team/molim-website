@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مُلم | جميع المنح</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+
+  <!-- الهيدر -->
+  <header>
+    <div class="logo">
+      <span class="logo-ar">مُلم</span>
+      <span class="logo-en">Molim</span>
+    </div>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="scholarships.html">المنح</a>
+      <a href="contact.html">تواصل معنا</a>
+    </nav>
+  </header>
+
+  <!-- عنوان الصفحة -->
+  <section class="page-hero">
+    <h1>🎓 جميع المنح الدراسية</h1>
+    <p>اكتشف المنح المتاحة وتفاصيلها كاملة</p>
+  </section>
+
+  <!-- البحث والفلتر -->
+  <section class="filters">
+    <input
+      type="text"
+      id="search"
+      placeholder="🔍 ابحث عن منحة..."
+    />
+    <select id="filter-status">
+      <option value="all">جميع المنح</option>
+      <option value="open">التقديم مفتوح</option>
+      <option value="closed">التقديم مغلق</option>
+    </select>
+    <select id="filter-degree">
+      <option value="all">جميع المراحل</option>
+      <option value="بكالوريوس">بكالوريوس</option>
+      <option value="ماجستير">ماجستير</option>
+      <option value="دكتوراه">دكتوراه</option>
+    </select>
+  </section>
+
+  <!-- قائمة المنح -->
+  <section class="featured">
+    <div id="scholarships-grid" class="grid"></div>
+    <p id="no-results" style="display:none; text-align:center; color:#aaa; margin-top:40px;">
+      لا توجد منح تطابق بحثك 😔
+    </p>
+  </section>
+
+  <!-- الفوتر -->
+  <footer>
+    <p>مُلم © 2026 | جميع الحقوق محفوظة</p>
+    <a href="https://t.me/sc2026hh" target="_blank" class="tg-btn">
+      📢 انضم لقروب التليجرام
+    </a>
+  </footer>
+
+  <script src="static/js/scholarships.js"></script>
+</body>
+</html>

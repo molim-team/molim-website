@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: #0f0f1a;
+  color: #f0f0f0;
+  direction: rtl;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #1a1a2e;
+  border-bottom: 2px solid #6c63ff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-ar {
+  font-size: 28px;
+  font-weight: 900;
+  color: #6c63ff;
+}
+
+.logo-en {
+  font-size: 13px;
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+nav a {
+  color: #f0f0f0;
+  text-decoration: none;
+  margin-right: 25px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #6c63ff;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
+
+.hero h1 {
+  font-size: 72px;
+  font-weight: 900;
+  color: #6c63ff;
+  margin-bottom: 15px;
+}
+
+.hero-sub {
+  font-size: 22px;
+  color: #ccc;
+  margin-bottom: 35px;
+}
+
+.btn-main {
+  background: #6c63ff;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+.btn-main:hover {
+  background: #574fd6;
+}
+
+/* ===== FEATURED ===== */
+.featured {
+  padding: 60px 40px;
+}
+
+.featured h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #6c63ff;
+  border-right: 4px solid #6c63ff;
+  padding-right: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #2a2a4a;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #6c63ff;
+}
+
+.card-flag {
+  width: 50px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.card .country {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card .degree {
+  color: #6c63ff;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.card .status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.status.open {
+  background: #1a4a1a;
+  color: #4caf50;
+}
+
+.status.closed {
+  background: #4a1a1a;
+  color: #f44336;
+}
+
+.card a {
+  display: block;
+  text-align: center;
+  background: #6c63ff;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+.card a:hover {
+  background: #574fd6;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #1a1a2e;
+  border-top: 2px solid #6c63ff;
+  margin-top: 60px;
+}
+
+footer p {
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.tg-btn {
+  background: #0088cc;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.tg-btn:hover {
+  background: #006fa3;
+}
+/* ===== SCHOLARSHIPS PAGE ===== */
+.page-hero {
+  text-align: center;
+  padding: 50px 20px 30px;
+  background: #16213e;
+}
+
+.page-hero h1 {
+  font-size: 40px;
+  color: #6c63ff;
+  margin-bottom: 10px;
+}
+
+.page-hero p {
+  color: #aaa;
+  font-size: 18px;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  padding: 25px 40px;
+  background: #1a1a2e;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #2a2a4a;
+  background: #0f0f1a;
+  color: #f0f0f0;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+.card .desc {
+  font-size: 13px;
+  color: #bbb;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.card .deadline {
+  font-size: 13px;
+  color: #f0a500;
+  margin-bottom: 12px;
+}
+/* ===== CONTACT PAGE ===== */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Tajawal', sans-serif;
+  transition: transform 0.3s, opacity 0.3s;
+  border: 1px solid transparent;
+}
+
+.contact-card:hover {
+  transform: translateX(-5px);
+  opacity: 0.9;
+}
+
+.contact-icon {
+  font-size: 32px;
+  min-width: 45px;
+  text-align: center;
+}
+
+.contact-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.telegram  { background: #0088cc; }
+.tiktok    { background: #010101; border-color: #fff2; }
+.youtube   { background: #ff0000; }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.twitter   { background: #1a1a2e; border-color: #fff2; }
