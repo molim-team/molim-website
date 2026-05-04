@@ -498,3 +498,44 @@ footer p {
         padding: 5px 3px;
     }
 }
+/* تنسيقات الهيدر الأساسية للشاشات الكبيرة */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* تنسيقات التجاوب مع شاشات الجوال (الشاشات الأصغر من 768 بكسل) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* جعل الشعار والروابط فوق بعضها */
+        gap: 12px;
+        padding: 12px 10px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    nav {
+        flex-wrap: wrap; /* السماح للروابط بالنزول بسطر واحد إذا لزم الأمر */
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 0.8rem; /* تصغير حجم الخط ليناسب الجوال */
+        padding: 4px 6px;
+        white-space: nowrap; /* منع انقسام كلمة "الأسئلة الشائعة" */
+    }
+}
