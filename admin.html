@@ -240,7 +240,8 @@ function toBase64(str) {
 
 // ✅ قراءة Base64 مع دعم كامل للعربية و Unicode
 function decodeContent(content) {
-  const bytes = Uint8Array.from(atob(content), c => c.charCodeAt(0));
+  const clean = content.replace(/\n/g, '');
+  const bytes = Uint8Array.from(atob(clean), c => c.charCodeAt(0));
   return JSON.parse(new TextDecoder('utf-8').decode(bytes));
 }
 
