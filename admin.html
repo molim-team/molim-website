@@ -52,6 +52,36 @@
       background: white; border-radius: 12px; padding: 15px;
       margin-bottom: 20px; border: 1px solid #ff4500;
     }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.5);
+      z-index: 1000; justify-content: center; align-items: flex-start;
+      padding: 20px; box-sizing: border-box; overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: white; border-radius: 16px; padding: 30px;
+      width: 100%; max-width: 650px; margin: auto;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .modal-box h2 { color: #ff4500; text-align: center; margin-bottom: 20px; }
+    .modal-close {
+      position: absolute; top: 15px; left: 15px;
+      background: none; border: none; font-size: 24px;
+      cursor: pointer; color: #666; line-height: 1;
+    }
+    .modal-close:hover { color: #cc0000; }
+    .btn-save {
+      width: 100%; padding: 15px; background: #1a3a6e; color: white;
+      border: none; border-radius: 10px; font-size: 18px;
+      font-weight: 700; cursor: pointer; font-family: 'Tajawal', sans-serif;
+      margin-top: 5px;
+    }
+    .btn-save:hover { background: #0f2550; }
+    #edit-msg { text-align: center; margin-top: 12px; font-weight: 700; font-size: 15px; }
   </style>
 </head>
 <body>
@@ -66,13 +96,11 @@
 <div class="admin-container">
   <h1>🎛️ لوحة تحكم مُلم</h1>
 
-  <!-- التوكن -->
   <div class="token-bar">
     <label style="font-weight:700; color:#1a3a6e;">🔑 التوكن (مطلوب لجميع العمليات)</label>
     <input type="password" id="tokenInput" placeholder="أدخل التوكن هنا..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #ff4500; font-size:15px; margin-top:8px; box-sizing:border-box;"/>
   </div>
 
-  <!-- التبويبات -->
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('add')">➕ إضافة منحة</button>
     <button class="tab-btn inactive" onclick="showTab('manage')">📋 إدارة المنح</button>
@@ -139,10 +167,71 @@
   </div>
 </div>
 
+<!-- نافذة التعديل -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEditModal()">✕</button>
+    <h2>✏️ تعديل المنحة</h2>
+
+    <div class="form-group">
+      <label>اسم المنحة *</label>
+      <input type="text" id="e_title" placeholder="اسم المنحة"/>
+    </div>
+    <div class="form-group">
+      <label>الدولة *</label>
+      <input type="text" id="e_country" placeholder="الدولة"/>
+    </div>
+    <div class="form-group">
+      <label>المراحل الدراسية</label>
+      <input type="text" id="e_degree" placeholder="مثال: بكالوريوس، ماجستير"/>
+    </div>
+    <div class="form-group">
+      <label>حالة التقديم</label>
+      <select id="e_status">
+        <option value="open">مفتوح</option>
+        <option value="closed">مغلق</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>آخر موعد للتقديم</label>
+      <input type="date" id="e_deadline"/>
+    </div>
+    <div class="form-group">
+      <label>وصف المنحة</label>
+      <textarea id="e_desc" placeholder="وصف المنحة..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>المميزات (افصل بينها بفاصلة)</label>
+      <input type="text" id="e_benefits" placeholder="مثال: رسوم دراسية، سكن مجاني"/>
+    </div>
+    <div class="form-group">
+      <label>الشروط (افصل بينها بفاصلة)</label>
+      <input type="text" id="e_requirements" placeholder="مثال: شهادة ثانوية"/>
+    </div>
+    <div class="form-group">
+      <label>رابط التقديم الرسمي</label>
+      <input type="url" id="e_link" placeholder="https://..."/>
+    </div>
+    <div class="form-group">
+      <label>رمز الدولة (emoji علم)</label>
+      <input type="text" id="e_flag" placeholder="مثال: 🇹🇷"/>
+    </div>
+    <div class="form-group">
+      <label>الاسم الإنجليزي للمنحة</label>
+      <input type="text" id="e_enTitle" placeholder="مثال: Turkey Government Scholarship"/>
+    </div>
+
+    <button class="btn-save" onclick="saveEdit()">💾 حفظ التعديلات</button>
+    <p id="edit-msg"></p>
+  </div>
+</div>
+
 <script>
 const OWNER = 'amr2006amr';
 const REPO  = 'molim-website';
 const FILE  = 'data/scholarships.json';
+
+let editingIndex = -1;
 
 function getToken() {
   return document.getElementById('tokenInput').value;
@@ -223,17 +312,18 @@ async function loadScholarships() {
   list.innerHTML = '⏳ جاري التحميل...';
   try {
     const data = await getFile();
-    const scholarships = JSON.parse(atob(data.content));
+    const scholarships = JSON.parse(decodeURIComponent(escape(atob(data.content))));
     list.innerHTML = '';
     scholarships.forEach((s, index) => {
       list.innerHTML += `
         <div class="scholarship-item">
           <div>
-            <h3>${s.flag || ''} ${s.title}</h3>
-            <p>${s.country} — ${s.degree || ''}</p>
+            <h3>${s.flag && s.flag.startsWith('http') ? `<img src="${s.flag}" style="width:25px; vertical-align:middle; margin-left:5px;"/>` : (s.flag || '')} ${s.name || s.title || ''}</h3>
+            <p>${s.country || ''} — ${s.degree || s.degrees || ''}</p>
           </div>
           <div class="item-btns">
-            <button class="btn-edit" onclick="deleteScholarship(${index})">🗑️ حذف</button>
+            <button class="btn-edit" onclick="openEditModal(${index})">✏️ تعديل</button>
+            <button class="btn-delete" onclick="deleteScholarship(${index})">🗑️ حذف</button>
           </div>
         </div>`;
     });
@@ -244,11 +334,10 @@ async function loadScholarships() {
 
 async function deleteScholarship(index) {
   if (!confirm('هل أنت متأكد من حذف هذه المنحة؟')) return;
-  const list = document.getElementById('scholarships-list');
   try {
     const data = await getFile();
-    const scholarships = JSON.parse(atob(data.content));
-    const title = scholarships[index].title;
+    const scholarships = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    const title = scholarships[index].name || scholarships[index].title;
     scholarships.splice(index, 1);
     await saveFile(data, scholarships, `حذف منحة: ${title}`);
     alert('✅ تم الحذف بنجاح!');
@@ -257,6 +346,91 @@ async function deleteScholarship(index) {
     alert('❌ حدث خطأ: ' + e.message);
   }
 }
+
+async function openEditModal(index) {
+  editingIndex = index;
+  document.getElementById('edit-msg').textContent = '';
+
+  try {
+    const data = await getFile();
+    const scholarships = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    const s = scholarships[index];
+
+    document.getElementById('e_title').value        = s.title || s.name || '';
+    document.getElementById('e_country').value      = s.country || '';
+    document.getElementById('e_degree').value       = s.degree || s.degrees || '';
+    document.getElementById('e_status').value       = s.status || 'open';
+    document.getElementById('e_deadline').value     = s.deadline || '';
+    document.getElementById('e_desc').value         = s.desc || s.description || '';
+    document.getElementById('e_benefits').value     = Array.isArray(s.benefits) ? s.benefits.join(', ') : (s.benefits || '');
+    document.getElementById('e_requirements').value = Array.isArray(s.requirements) ? s.requirements.join(', ') : (s.requirements || '');
+    document.getElementById('e_link').value         = s.link || '';
+    document.getElementById('e_flag').value         = s.flag || '';
+    document.getElementById('e_enTitle').value      = s.enTitle || '';
+
+    document.getElementById('editModal').classList.add('open');
+  } catch(e) {
+    alert('❌ فشل تحميل بيانات المنحة: ' + e.message);
+  }
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').classList.remove('open');
+  editingIndex = -1;
+}
+
+async function saveEdit() {
+  const msg = document.getElementById('edit-msg');
+  msg.style.color = '#1a3a6e';
+  msg.textContent = '⏳ جاري الحفظ...';
+
+  const updatedTitle   = document.getElementById('e_title').value.trim();
+  const updatedCountry = document.getElementById('e_country').value.trim();
+
+  if (!updatedTitle || !updatedCountry) {
+    msg.style.color = 'red';
+    msg.textContent = '❌ اسم المنحة والدولة مطلوبان!';
+    return;
+  }
+
+  try {
+    const data = await getFile();
+    const scholarships = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+    const old = scholarships[editingIndex];
+
+    scholarships[editingIndex] = {
+      ...old,
+      title:        updatedTitle,
+      country:      updatedCountry,
+      degree:       document.getElementById('e_degree').value.trim(),
+      status:       document.getElementById('e_status').value,
+      deadline:     document.getElementById('e_deadline').value,
+      desc:         document.getElementById('e_desc').value.trim(),
+      benefits:     document.getElementById('e_benefits').value.split(',').map(s => s.trim()).filter(Boolean),
+      requirements: document.getElementById('e_requirements').value.split(',').map(s => s.trim()).filter(Boolean),
+      link:         document.getElementById('e_link').value.trim(),
+      flag:         document.getElementById('e_flag').value.trim(),
+      enTitle:      document.getElementById('e_enTitle').value.trim(),
+    };
+
+    await saveFile(data, scholarships, `تعديل منحة: ${updatedTitle}`);
+    msg.style.color = 'green';
+    msg.textContent = '✅ تم حفظ التعديلات بنجاح!';
+
+    setTimeout(() => {
+      closeEditModal();
+      loadScholarships();
+    }, 1500);
+
+  } catch(e) {
+    msg.style.color = 'red';
+    msg.textContent = '❌ حدث خطأ: ' + e.message;
+  }
+}
+
+document.getElementById('editModal').addEventListener('click', function(e) {
+  if (e.target === this) closeEditModal();
+});
 </script>
 </body>
 </html>
