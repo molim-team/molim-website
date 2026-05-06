@@ -72,7 +72,7 @@ fetch('data/scholarships.json')
           🌐 زيارة الموقع الرسمي للتقديم
         </a>
 
-        <a href="scholarships.html" class="btn-details" style="display:block; text-align:center; margin-top:10px;">
+        <a href="scholarships.html" class="btn-main" style="display:block; text-align:center; margin-top:10px;">
           ← العودة لجميع المنح
         </a>
 

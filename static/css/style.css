@@ -8,9 +8,10 @@
 
 body {
   font-family: 'Tajawal', sans-serif;
-  background: #ffffff;  /* ← غيّر من #1a0a2e إلى #ffffff */
+  background: linear-gradient(135deg, #f0f4ff, #ffe8e0);
   color: #1a0a2e;
   direction: rtl;
+  min-height: 100vh;
 }
 
 /* ===== HEADER ===== */
@@ -62,7 +63,7 @@ nav a:hover {
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(135deg, #1a0a2e, #3b1a6e, #ff4500);
+  background: linear-gradient(135deg, #2d1f5e, #3b1a6e, #ff4500);
 }
 
 .hero-logo-wrap {
@@ -76,7 +77,7 @@ nav a:hover {
   max-width: 80%;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.7));
+  filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.7)) brightness(1.3);
   animation: floatLogo 3s ease-in-out infinite;
   transition: transform 0.3s;
 }
@@ -149,10 +150,10 @@ nav a:hover {
 
 /* ===== CARD ===== */
 .card {
-  background: #ff4500;
+  background: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  border: 1px solid #cc3300;
+  border: 1px solid #e0e0e0;
   transition: transform 0.3s, border-color 0.3s;
 }
 
@@ -171,17 +172,17 @@ nav a:hover {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #fff;
+  color: #ff4500;
 }
 
 .card .country {
-  color: #fff;
+  color: #1a3a6e;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 .card .degree {
-  color: #fff;
+  color: #1a3a6e;
   font-size: 13px;
   margin-bottom: 12px;
 }
@@ -208,29 +209,35 @@ nav a:hover {
 .card a {
   display: block;
   text-align: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #ff4500;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 10px 15px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
-  transition: background 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-top: 8px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .card a:hover {
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(-3px);
 }
 
 .card .desc {
   font-size: 13px;
-  color: #fff;
+  color: #1a3a6e;
   margin: 10px 0;
   line-height: 1.6;
 }
 
 .card .deadline {
   font-size: 13px;
-  color: #ffe0d0;
+  color: #1a3a6e;
   margin-bottom: 12px;
 }
 
@@ -267,7 +274,7 @@ footer p {
 .page-hero {
   text-align: center;
   padding: 50px 20px 30px;
-  background: #1a0a2e;
+  background: linear-gradient(135deg, #2d1f5e, #3b1a6e, #ff4500);
 }
 
 .page-hero h1 {
@@ -365,19 +372,19 @@ footer p {
   display: block;
   text-align: center;
   background: transparent;
-  color: #fff;
+  color: #ffffff;
   padding: 10px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
-  border: 2px solid #fff;
+  border: 2px solid #ff4500;
   margin-top: 8px;
   transition: all 0.3s;
 }
 
 .btn-details:hover {
-  background: #fff;
-  color: #ff4500;
+  background: #cc3300;
+  color: #cc3300;
 }
 
 /* ===== DETAILS PAGE ===== */
@@ -390,21 +397,15 @@ footer p {
 .details-hero {
   text-align: center;
   padding: 40px 20px;
-  background: #ff4500;
+  background: linear-gradient(135deg, #2d1f5e, #3b1a6e, #ff4500);
   border-radius: 12px;
   margin-bottom: 30px;
-}
-
-.details-flag {
-  width: 80px;
-  border-radius: 6px;
-  margin-bottom: 15px;
 }
 
 .details-hero h1 {
   font-size: 36px;
   font-weight: 900;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
@@ -413,41 +414,31 @@ footer p {
   margin-bottom: 15px;
 }
 
-.details-body {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .details-card {
-  background: #ff4500;
+  background: #ffffff;
   border-radius: 12px;
   padding: 25px;
-  border: 1px solid #cc3300;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .details-card h2 {
   font-size: 20px;
-  color: #fff;
+  color: #ff4500;
   margin-bottom: 15px;
   font-weight: 700;
 }
 
 .details-card p {
-  color: #fff;
+  color: #1a3a6e;
   line-height: 1.8;
   margin-bottom: 8px;
 }
 
-.details-card ul {
-  list-style: none;
-  padding: 0;
-}
-
 .details-card ul li {
-  color: #fff;
+  color: #1a3a6e;
   padding: 8px 0;
-  border-bottom: 1px solid #cc3300;
+  border-bottom: 1px solid #e0e0e0;
   line-height: 1.6;
 }
 
@@ -457,10 +448,9 @@ footer p {
 
 .details-card ul li::before {
   content: "✓ ";
-  color: #ffe0d0;
+  color: #ff4500;
   font-weight: 700;
 }
-
 /* ===== FAQ PAGE ===== */
 .faq-section {
   max-width: 800px;
@@ -469,10 +459,11 @@ footer p {
 }
 
 .faq-item {
-  background: #ff4500;
+  background: #ffffff;
   border-radius: 12px;
   margin-bottom: 15px;
-  border: 1px solid #cc3300;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
@@ -484,17 +475,17 @@ footer p {
   cursor: pointer;
   font-size: 17px;
   font-weight: 700;
-  color: #fff;
+  color: #ff4500;
   transition: background 0.3s;
 }
 
 .faq-question:hover {
-  background: #cc3300;
+  background: #fff5f2;
 }
 
 .faq-icon {
   font-size: 24px;
-  color: #fff;
+  color: #ff4500;
   font-weight: 900;
   min-width: 20px;
   text-align: center;
@@ -505,7 +496,7 @@ footer p {
   overflow: hidden;
   transition: max-height 0.4s ease;
   padding: 0 25px;
-  color: #fff;
+  color: #1a3a6e;
   line-height: 1.8;
   font-size: 15px;
 }
@@ -525,11 +516,14 @@ footer p {
 }
 
 .about-card {
-  background: #ff4500;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 30px;
-  border: 1px solid #cc3300;
-  transition: transform 0.3s, border-color 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .about-card:hover {
@@ -546,12 +540,12 @@ footer p {
 .about-card h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: #ff4500;
   margin-bottom: 12px;
 }
 
 .about-card p {
-  color: #fff;
+  color: #1a3a6e;
   line-height: 1.8;
   font-size: 15px;
 }
