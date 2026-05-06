@@ -237,7 +237,8 @@ function toBase64(str) {
 
 // قراءة الملف من GitHub مع دعم العربية
 function decodeContent(content) {
-  return JSON.parse(decodeURIComponent(escape(atob(content))));
+  const bytes = Uint8Array.from(atob(content), c => c.charCodeAt(0));
+  return JSON.parse(new TextDecoder('utf-8').decode(bytes));
 }
 
 function showTab(tab) {
