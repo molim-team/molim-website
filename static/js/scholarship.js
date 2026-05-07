@@ -55,12 +55,14 @@ fetch('data/scholarships.json?v=' + Date.now())
           </ul>
         </div>
 
-        <div class="details-card">
-          <h2>📌 الشروط والمتطلبات</h2>
-          <ul>
-            ${s.requirements.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-        </div>
+       ${s.requirements && s.requirements.length ? `
+      <div class="details-card">
+        <h2>📌 الشروط والمتطلبات</h2>
+        <ul>
+          ${s.requirements.map(r => `<li>${r}</li>`).join('')}
+       </ul>
+      </div>
+      ` : ''}
 
         ${s.documents ? `
         <div class="details-card">
@@ -76,10 +78,12 @@ fetch('data/scholarships.json?v=' + Date.now())
         </div>
         ` : ''}
 
+        ${s.notes ? `
         <div class="details-card">
-          <h2>📝 تفاصيل إضافية</h2>
-          <p>${s.notes ||''}</p>
+         <h2>📝 تفاصيل إضافية</h2>
+        <p>${s.notes}</p>
         </div>
+        ` : ''}
 
         <a href="${s.link}" target="_blank" class="btn-main" style="display:block; text-align:center; margin-top:20px;">
           🌐 زيارة الموقع الرسمي للتقديم
