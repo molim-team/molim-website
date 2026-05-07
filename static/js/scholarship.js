@@ -71,7 +71,7 @@ fetch('data/scholarships.json?v=' + Date.now())
             <p><strong>🔴 إجباري:</strong></p>
             <ul>${s.documents.required.map(d => `<li>${d}</li>`).join('')}</ul>
           ` : ''}
-          ${s.documents.optional ? `
+          ${s.documents.optional && s.documents.optional.length ? `
             <p style="margin-top:15px"><strong>🟡 اختياري / يقوي ملفك:</strong></p>
             <ul>${s.documents.optional.map(d => `<li>${d}</li>`).join('')}</ul>
           ` : ''}
