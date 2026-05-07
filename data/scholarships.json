@@ -315,5 +315,38 @@
         "شهادات داعمة"
       ]
     }
+  },
+  {
+    "id": "international-icesco-scholarships",
+    "name": "منحة حكومة اوزباكستان",
+    "name_en": "International Icesco Scholarships",
+    "country": "اوزباكستان",
+    "flag": "https://flagcdn.com/w320/uz.png",
+    "degree": "بكالوريوس",
+    "description": "منحة مقدمة من حكومة اوزباكستان لمرحلة البكالوريوس",
+    "benefits": [
+      "تغطية الرسوم الدراسية",
+      "سكن مجاني",
+      "راتب شهري",
+      "تامين صحي"
+    ],
+    "requirements": [
+      "ان يكون من دول الاعضاء في نظمة ICESCO",
+      "إثبات إتقان اللغة الانجليزية بدرجة 5.5 في اختبار IELTS او ما يعادلها"
+    ],
+    "open_date": "2026-04-01",
+    "deadline": "2026-05-15",
+    "documents": {
+      "required": [
+        "شهادة ثانوية",
+        "جواز سفر",
+        "فحص طبي",
+        "شهادة لغة انجليزية"
+      ],
+      "optional": []
+    },
+    "link": "https://icesco.org/en/international-scholarships/",
+    "open": true,
+    "notes": "المنحة تشمل 4 تخصصات فقط. الطب, الإدارة البيئية والمستدامة, البيئة والاقتصاد, علم البيئة والإدارة العامة"
   }
 ]
