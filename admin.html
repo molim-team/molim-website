@@ -113,6 +113,8 @@
   </style>
 </head>
 <body>
+
+<!-- ===== الهيدر ===== -->
 <header>
   <div class="logo"><img src="static/logo.png" alt="مُلم" class="logo-img"/></div>
   <nav>
@@ -124,18 +126,22 @@
 <div class="admin-container">
   <h1>🎛️ لوحة تحكم مُلم</h1>
 
+  <!-- ===== خانة التوكن — مطلوبة لجميع العمليات ===== -->
   <div class="token-bar">
     <label style="font-weight:700; color:#1a3a6e;">🔑 التوكن (مطلوب لجميع العمليات)</label>
     <input type="password" id="tokenInput" placeholder="أدخل التوكن هنا..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #ff4500; font-size:15px; margin-top:8px; box-sizing:border-box;"/>
   </div>
 
+  <!-- ===== تبويبات التنقل بين الإضافة والإدارة ===== -->
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('add')">➕ إضافة منحة</button>
     <button class="tab-btn inactive" onclick="showTab('manage')">📋 إدارة المنح</button>
   </div>
 
-  <!-- ===== قسم الإضافة ===== -->
+  <!-- ===== قسم إضافة منحة جديدة ===== -->
   <div id="section-add">
+
+    <!-- المعلومات الأساسية -->
     <div class="form-group">
       <label>اسم المنحة *</label>
       <input type="text" id="title" placeholder="مثال: منحة الحكومة التركية"/>
@@ -148,6 +154,14 @@
       <label>المراحل الدراسية</label>
       <input type="text" id="degree" placeholder="مثال: بكالوريوس، ماجستير، دكتوراه"/>
     </div>
+
+    <!-- لغة الدراسة — تظهر في المعلومات العامة بصفحة التفاصيل -->
+    <div class="form-group">
+      <label>🌐 لغة الدراسة</label>
+      <input type="text" id="language" placeholder="مثال: الإنجليزية، العربية، الصينية"/>
+    </div>
+
+    <!-- حالة التقديم والمواعيد -->
     <div class="form-group">
       <label>حالة التقديم</label>
       <select id="status">
@@ -163,10 +177,14 @@
       <label>📅 آخر موعد للتقديم</label>
       <input type="date" id="deadline"/>
     </div>
+
+    <!-- الوصف القصير — يظهر في كارد المنحة في صفحة جميع المنح -->
     <div class="form-group">
-      <label>وصف المنحة</label>
-      <textarea id="desc" placeholder="اكتب وصفاً مختصراً..."></textarea>
+      <label>وصف المنحة (قصير)</label>
+      <textarea id="desc" placeholder="اكتب وصفاً مختصراً يظهر في كارد المنحة..."></textarea>
     </div>
+
+    <!-- المميزات والشروط -->
     <div class="form-group">
       <label>المميزات (افصل بينها بفاصلة)</label>
       <input type="text" id="benefits" placeholder="مثال: رسوم دراسية، سكن مجاني، راتب شهري"/>
@@ -175,6 +193,14 @@
       <label>الشروط (افصل بينها بفاصلة)</label>
       <input type="text" id="requirements" placeholder="مثال: شهادة ثانوية، إجادة الإنجليزية"/>
     </div>
+
+    <!-- التخصصات المتاحة — تظهر كقسم منفصل في صفحة تفاصيل المنحة -->
+    <div class="form-group">
+      <label>📚 التخصصات المتاحة (افصل بينها بفاصلة)</label>
+      <input type="text" id="majors" placeholder="مثال: طب، هندسة، علوم حاسوب، أدب عربي"/>
+    </div>
+
+    <!-- الملفات المطلوبة — إجبارية واختيارية -->
     <div class="files-section">
       <h4>📂 الملفات المطلوبة</h4>
       <p style="font-weight:700; color:#1a3a6e; margin:0 0 8px;">📌 الملفات الإجبارية</p>
@@ -185,6 +211,8 @@
       <div id="optional-files-add"></div>
       <button class="btn-add-file" onclick="addFileRow('optional-files-add')">+ إضافة ملف اختياري</button>
     </div>
+
+    <!-- روابط ومعرفات -->
     <div class="form-group">
       <label>رابط التقديم الرسمي</label>
       <input type="url" id="link" placeholder="https://..."/>
@@ -197,15 +225,18 @@
       <label>الاسم الإنجليزي للمنحة</label>
       <input type="text" id="enTitle" placeholder="مثال: Turkey Government Scholarship"/>
     </div>
+
+    <!-- التفاصيل الإضافية — تظهر في قسم "تفاصيل إضافية" بصفحة المنحة الكاملة -->
     <div class="form-group">
       <label>📝 تفاصيل إضافية</label>
-      <textarea id="notes" placeholder="معلومات إضافية عن المنحة..."></textarea>
+      <textarea id="notes" placeholder="معلومات إضافية تظهر في صفحة تفاصيل المنحة..."></textarea>
     </div>
+
     <button class="btn-submit" onclick="addScholarship()">✅ إضافة المنحة</button>
     <p id="msg"></p>
   </div>
 
-  <!-- ===== قسم الإدارة ===== -->
+  <!-- ===== قسم إدارة المنح الموجودة ===== -->
   <div id="section-manage" style="display:none;">
     <button class="btn-submit" onclick="loadScholarships()" style="margin-bottom:15px;">🔄 تحميل المنح</button>
     <div id="scholarships-list"></div>
@@ -213,11 +244,13 @@
   </div>
 </div>
 
-<!-- ===== مودال التعديل ===== -->
+<!-- ===== مودال تعديل منحة موجودة ===== -->
 <div class="modal-overlay" id="editModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeEditModal()">✕</button>
     <h2>✏️ تعديل المنحة</h2>
+
+    <!-- المعلومات الأساسية -->
     <div class="form-group">
       <label>اسم المنحة *</label>
       <input type="text" id="e_title" placeholder="اسم المنحة"/>
@@ -230,6 +263,14 @@
       <label>المراحل الدراسية</label>
       <input type="text" id="e_degree" placeholder="مثال: بكالوريوس، ماجستير"/>
     </div>
+
+    <!-- لغة الدراسة -->
+    <div class="form-group">
+      <label>🌐 لغة الدراسة</label>
+      <input type="text" id="e_language" placeholder="مثال: الإنجليزية، العربية، الصينية"/>
+    </div>
+
+    <!-- حالة التقديم والمواعيد -->
     <div class="form-group">
       <label>حالة التقديم</label>
       <select id="e_status">
@@ -245,10 +286,14 @@
       <label>📅 آخر موعد للتقديم</label>
       <input type="date" id="e_deadline"/>
     </div>
+
+    <!-- الوصف القصير -->
     <div class="form-group">
-      <label>وصف المنحة</label>
-      <textarea id="e_desc" placeholder="وصف المنحة..."></textarea>
+      <label>وصف المنحة (قصير)</label>
+      <textarea id="e_desc" placeholder="وصف مختصر يظهر في كارد المنحة..."></textarea>
     </div>
+
+    <!-- المميزات والشروط -->
     <div class="form-group">
       <label>المميزات (افصل بينها بفاصلة)</label>
       <input type="text" id="e_benefits" placeholder="مثال: رسوم دراسية، سكن مجاني"/>
@@ -257,6 +302,14 @@
       <label>الشروط (افصل بينها بفاصلة)</label>
       <input type="text" id="e_requirements" placeholder="مثال: شهادة ثانوية"/>
     </div>
+
+    <!-- التخصصات المتاحة -->
+    <div class="form-group">
+      <label>📚 التخصصات المتاحة (افصل بينها بفاصلة)</label>
+      <input type="text" id="e_majors" placeholder="مثال: طب، هندسة، علوم حاسوب"/>
+    </div>
+
+    <!-- الملفات المطلوبة -->
     <div class="files-section">
       <h4>📂 الملفات المطلوبة</h4>
       <p style="font-weight:700; color:#1a3a6e; margin:0 0 8px;">📌 الملفات الإجبارية</p>
@@ -267,6 +320,8 @@
       <div id="optional-files-edit"></div>
       <button class="btn-add-file" onclick="addFileRow('optional-files-edit')">+ إضافة ملف اختياري</button>
     </div>
+
+    <!-- روابط ومعرفات -->
     <div class="form-group">
       <label>رابط التقديم الرسمي</label>
       <input type="url" id="e_link" placeholder="https://..."/>
@@ -279,28 +334,35 @@
       <label>الاسم الإنجليزي للمنحة</label>
       <input type="text" id="e_enTitle" placeholder="مثال: Turkey Government Scholarship"/>
     </div>
+
+    <!-- التفاصيل الإضافية -->
     <div class="form-group">
       <label>📝 تفاصيل إضافية</label>
-      <textarea id="e_notes" placeholder="معلومات إضافية عن المنحة..."></textarea>
+      <textarea id="e_notes" placeholder="معلومات إضافية تظهر في صفحة تفاصيل المنحة..."></textarea>
     </div>
+
     <button class="btn-save" onclick="saveEdit()">💾 حفظ التعديلات</button>
     <p id="edit-msg"></p>
   </div>
 </div>
 
 <script>
+// ===== إعدادات GitHub — اسم المستخدم والمستودع والملف ===== //
 const OWNER = 'amr2006amr';
 const REPO  = 'molim-website';
 const FILE  = 'data/scholarships.json';
 
-let editingIndex = -1;
-let cachedSha = '';
-let cachedScholarships = [];
+// ===== متغيرات عامة — تخزين البيانات مؤقتاً لتجنب طلبات زائدة ===== //
+let editingIndex = -1;       // رقم المنحة اللي يتم تعديلها
+let cachedSha = '';           // SHA الملف الحالي — مطلوب لأي تعديل
+let cachedScholarships = [];  // نسخة محلية من جميع المنح
 
+// ===== جلب التوكن من الحقل ===== //
 function getToken() {
   return document.getElementById('tokenInput').value;
 }
 
+// ===== تحويل النص إلى Base64 بدعم UTF-8 (للعربية) ===== //
 function toBase64(str) {
   const bytes = new TextEncoder().encode(str);
   let binary = '';
@@ -308,12 +370,14 @@ function toBase64(str) {
   return btoa(binary);
 }
 
+// ===== فك تشفير محتوى الملف القادم من GitHub ===== //
 function decodeContent(content) {
   const clean = content.replace(/\n/g, '');
   const bytes = Uint8Array.from(atob(clean), c => c.charCodeAt(0));
   return JSON.parse(new TextDecoder('utf-8').decode(bytes));
 }
 
+// ===== التبديل بين تبويب الإضافة وتبويب الإدارة ===== //
 function showTab(tab) {
   document.getElementById('section-add').style.display = tab === 'add' ? 'block' : 'none';
   document.getElementById('section-manage').style.display = tab === 'manage' ? 'block' : 'none';
@@ -322,7 +386,7 @@ function showTab(tab) {
   });
 }
 
-// ===== دوال الملفات =====
+// ===== دوال إدارة صفوف الملفات (إضافة / حذف / قراءة / مسح) ===== //
 function addFileRow(containerId, value = '') {
   const container = document.getElementById(containerId);
   const row = document.createElement('div');
@@ -348,7 +412,7 @@ function populateFileRows(containerId, items = []) {
   items.forEach(val => addFileRow(containerId, val));
 }
 
-// ===== GitHub =====
+// ===== جلب الملف الحالي من GitHub (يُعيد المحتوى والـ SHA) ===== //
 async function getFile() {
   const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
     headers: { Authorization: `token ${getToken()}` }
@@ -357,6 +421,7 @@ async function getFile() {
   return await res.json();
 }
 
+// ===== حفظ الملف المعدّل على GitHub ===== //
 async function saveFile(sha, scholarships, message) {
   const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
     method: 'PUT',
@@ -375,6 +440,7 @@ async function saveFile(sha, scholarships, message) {
     throw new Error(result.message || 'فشل الحفظ');
   }
 
+  // تحديث الـ SHA بعد كل حفظ ناجح لتجنب تعارض التعديلات
   if (result.content && result.content.sha) {
     cachedSha = result.content.sha;
   }
@@ -382,7 +448,7 @@ async function saveFile(sha, scholarships, message) {
   return result;
 }
 
-// ===== الإضافة =====
+// ===== إضافة منحة جديدة ===== //
 async function addScholarship() {
   const msg = document.getElementById('msg');
   msg.style.color = '#1a3a6e';
@@ -397,11 +463,13 @@ async function addScholarship() {
     return;
   }
 
+  // توليد ID فريد من الاسم الإنجليزي أو من الوقت
   const enTitleVal = document.getElementById('enTitle').value.trim();
   const generatedId = enTitleVal
     ? enTitleVal.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
     : 'scholarship-' + Date.now();
 
+  // بناء كائن المنحة الجديدة
   const newEntry = {
     id:           generatedId,
     name:         titleVal,
@@ -409,9 +477,11 @@ async function addScholarship() {
     country:      countryVal,
     flag:         document.getElementById('flag').value.trim(),
     degree:       document.getElementById('degree').value.trim(),
+    language:     document.getElementById('language').value.trim(),
     description:  document.getElementById('desc').value.trim(),
     benefits:     document.getElementById('benefits').value.split(',').map(s => s.trim()).filter(Boolean),
     requirements: document.getElementById('requirements').value.split(',').map(s => s.trim()).filter(Boolean),
+    majors:       document.getElementById('majors').value.split(',').map(s => s.trim()).filter(Boolean),
     open_date:    document.getElementById('open_date').value,
     deadline:     document.getElementById('deadline').value,
     documents: {
@@ -430,7 +500,8 @@ async function addScholarship() {
     await saveFile(data.sha, current, `إضافة منحة: ${newEntry.name}`);
     msg.style.color = 'green';
     msg.textContent = '✅ تمت إضافة المنحة بنجاح! ستظهر خلال دقائق.';
-    ['title','country','degree','desc','benefits','requirements','link','flag','enTitle','notes'].forEach(id => {
+    // مسح جميع الحقول بعد الإضافة
+    ['title','country','degree','language','desc','benefits','requirements','majors','link','flag','enTitle','notes'].forEach(id => {
       document.getElementById(id).value = '';
     });
     document.getElementById('open_date').value = '';
@@ -444,14 +515,14 @@ async function addScholarship() {
   }
 }
 
-// ===== تحميل المنح =====
+// ===== تحميل قائمة المنح الموجودة وعرضها ===== //
 async function loadScholarships() {
   const list = document.getElementById('scholarships-list');
   list.innerHTML = '⏳ جاري التحميل...';
   try {
     const data = await getFile();
-    cachedSha = data.sha;
-    cachedScholarships = decodeContent(data.content);
+    cachedSha = data.sha;                            // حفظ SHA للاستخدام عند التعديل والحذف
+    cachedScholarships = decodeContent(data.content); // حفظ البيانات محلياً
     list.innerHTML = '';
     if (cachedScholarships.length === 0) {
       list.innerHTML = '<p style="text-align:center; color:#aaa;">لا توجد منح حالياً</p>';
@@ -478,16 +549,18 @@ async function loadScholarships() {
   }
 }
 
-// ===== الحذف =====
+// ===== حذف منحة ===== //
 async function deleteScholarship(index) {
   if (!confirm('هل أنت متأكد من حذف هذه المنحة؟')) return;
   try {
+    // محاولة الحذف من البيانات المخزنة محلياً أولاً
     const title = cachedScholarships[index].name || cachedScholarships[index].title;
     cachedScholarships.splice(index, 1);
     await saveFile(cachedSha, cachedScholarships, `حذف منحة: ${title}`);
     alert('✅ تم الحذف بنجاح!');
     loadScholarships();
   } catch(e) {
+    // إذا فشل، جرب الجلب مباشرة من GitHub
     try {
       const data = await getFile();
       const scholarships = decodeContent(data.content);
@@ -502,7 +575,7 @@ async function deleteScholarship(index) {
   }
 }
 
-// ===== فتح مودال التعديل =====
+// ===== فتح مودال التعديل وتعبئة الحقول ببيانات المنحة ===== //
 function openEditModal(index) {
   editingIndex = index;
   document.getElementById('edit-msg').textContent = '';
@@ -514,15 +587,18 @@ function openEditModal(index) {
 
   const s = cachedScholarships[index];
 
+  // تعبئة جميع الحقول ببيانات المنحة المختارة
   document.getElementById('e_title').value        = s.name || s.title || '';
   document.getElementById('e_country').value      = s.country || '';
   document.getElementById('e_degree').value       = s.degree || s.degrees || '';
+  document.getElementById('e_language').value     = s.language || '';
   document.getElementById('e_status').value       = (s.open === true || s.status === 'open') ? 'open' : 'closed';
   document.getElementById('e_open_date').value    = s.open_date || '';
   document.getElementById('e_deadline').value     = s.deadline || '';
   document.getElementById('e_desc').value         = s.description || s.desc || '';
   document.getElementById('e_benefits').value     = Array.isArray(s.benefits) ? s.benefits.join(', ') : (s.benefits || '');
   document.getElementById('e_requirements').value = Array.isArray(s.requirements) ? s.requirements.join(', ') : (s.requirements || '');
+  document.getElementById('e_majors').value       = Array.isArray(s.majors) ? s.majors.join(', ') : (s.majors || '');
   document.getElementById('e_link').value         = s.link || '';
   document.getElementById('e_flag').value         = s.flag || '';
   document.getElementById('e_enTitle').value      = s.name_en || s.enTitle || '';
@@ -534,12 +610,13 @@ function openEditModal(index) {
   document.getElementById('editModal').classList.add('open');
 }
 
+// ===== إغلاق مودال التعديل ===== //
 function closeEditModal() {
   document.getElementById('editModal').classList.remove('open');
   editingIndex = -1;
 }
 
-// ===== حفظ التعديل =====
+// ===== حفظ التعديلات على منحة موجودة ===== //
 async function saveEdit() {
   const msg = document.getElementById('edit-msg');
   msg.style.color = '#1a3a6e';
@@ -557,6 +634,7 @@ async function saveEdit() {
   try {
     const old = cachedScholarships[editingIndex];
 
+    // تحديث بيانات المنحة في النسخة المحلية مع الحفاظ على الحقول القديمة غير المعدّلة
     cachedScholarships[editingIndex] = {
       ...old,
       name:           updatedTitle,
@@ -564,9 +642,11 @@ async function saveEdit() {
       country:        updatedCountry,
       flag:           document.getElementById('e_flag').value.trim(),
       degree:         document.getElementById('e_degree').value.trim(),
+      language:       document.getElementById('e_language').value.trim(),
       description:    document.getElementById('e_desc').value.trim(),
       benefits:       document.getElementById('e_benefits').value.split(',').map(s => s.trim()).filter(Boolean),
       requirements:   document.getElementById('e_requirements').value.split(',').map(s => s.trim()).filter(Boolean),
+      majors:         document.getElementById('e_majors').value.split(',').map(s => s.trim()).filter(Boolean),
       open_date:      document.getElementById('e_open_date').value,
       deadline:       document.getElementById('e_deadline').value,
       documents: {
@@ -583,6 +663,7 @@ async function saveEdit() {
     msg.style.color = 'green';
     msg.textContent = '✅ تم حفظ التعديلات بنجاح!';
 
+    // إغلاق المودال وإعادة تحميل القائمة بعد ثانية ونصف
     setTimeout(() => {
       closeEditModal();
       loadScholarships();
@@ -595,6 +676,7 @@ async function saveEdit() {
   }
 }
 
+// ===== إغلاق المودال عند الضغط خارجه ===== //
 document.getElementById('editModal').addEventListener('click', function(e) {
   if (e.target === this) closeEditModal();
 });

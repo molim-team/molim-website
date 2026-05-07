@@ -34,9 +34,19 @@ fetch('data/scholarships.json?v=' + Date.now())
           <h2>📋 معلومات عامة</h2>
           <p><strong>الدولة:</strong> ${s.country}</p>
           <p><strong>المراحل الدراسية:</strong> ${s.degree}</p>
+          ${s.language ? `<p><strong>لغة الدراسة:</strong> ${s.language}</p>` : ''}
           ${s.open_date ? `<p><strong>موعد فتح التقديم:</strong> ${s.open_date}</p>` : ''}
           <p><strong>آخر موعد للتقديم:</strong> ${s.deadline}</p>
         </div>
+
+        ${s.majors && s.majors.length ? `
+        <div class="details-card">
+          <h2>📚 التخصصات المتاحة</h2>
+          <ul>
+         ${s.majors.map(m => `<li>${m}</li>`).join('')}
+         </ul>
+        </div>
+        ` : ''}
 
         <div class="details-card">
           <h2>🎁 المميزات</h2>
