@@ -45,6 +45,8 @@ function renderCards(list) {
       </a>
     `;
     grid.appendChild(card);
+
+    observeCards();
   });
 }
 
@@ -80,4 +82,19 @@ function shareScholarship(id, name, country) {
     navigator.clipboard.writeText(url);
     alert('✅ تم نسخ رابط المنحة!');
   }
+}
+
+//اضهار الكروت في خانة المنح
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+function observeCards() {
+  document.querySelectorAll('.card').forEach(card => {
+    observer.observe(card);
+  });
 }

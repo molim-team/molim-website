@@ -683,3 +683,118 @@ footer p {
   width: 100%;
   box-sizing: border-box;
 }
+
+/* ===== HAMBURGER MENU ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ff4500;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-right: 0;
+  }
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.card, .about-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.visible, .about-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== BACK TO TOP ===== */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+  background: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(255,69,0,0.4);
+  transition: opacity 0.3s;
+}
+
+/* ===== SKELETON LOADING ===== */
+.skeleton-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.skeleton-flag  { width: 50px; height: 35px; margin-bottom: 15px; }
+.skeleton-title { width: 70%; height: 20px; }
+.skeleton-text  { width: 50%; height: 14px; }
+.skeleton-text.wide { width: 85%; }
+.skeleton-btn   { width: 100%; height: 38px; margin-top: 15px; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown {
+  background: #fff5f2;
+  border: 1px solid #ff4500;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #ff4500;
+  font-weight: 700;
+}
+
+.countdown.urgent {
+  background: #4a1a1a;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
