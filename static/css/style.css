@@ -650,11 +650,25 @@ footer p {
 }
 
 #open-scholarships-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   gap: 20px;
-  padding: 0 20px;
+  padding: 0 20px 20px;
   direction: rtl;
+}
+
+#open-scholarships-grid::-webkit-scrollbar {
+  display: none;
+}
+
+#open-scholarships-grid .card {
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  scroll-snap-align: end;
 }
 
 #open-scholarships-grid .btn-details {
