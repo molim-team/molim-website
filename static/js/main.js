@@ -152,6 +152,14 @@ window.addEventListener('scroll', () => {
   // زر العودة
   btn.style.display = window.scrollY > 300 ? 'block' : 'none';
 
+  // إخفاء الهيدر
+  const header = document.querySelector('header');
+  if (window.scrollY > 80) {
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    header.style.transform = 'translateY(0)';
+  }
+
   // أنيميشن الكروت
   document.querySelectorAll('.card, .about-card').forEach(card => {
     observer.observe(card);
@@ -163,6 +171,6 @@ function slideCards(direction) {
   const grid = document.getElementById('open-scholarships-grid');
   const card = grid.querySelector('.card');
   if (!card) return;
-  const cardWidth = card.getBoundingClientRect().width + 20;
+  const cardWidth = card.offsetWidth + 20;
   grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
 }

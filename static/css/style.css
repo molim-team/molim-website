@@ -7,6 +7,7 @@
 }
 
 body {
+  padding-top: 80px;
   font-family: 'Tajawal', sans-serif;
   background: linear-gradient(135deg, #f0f4ff, #ffe8e0);
   color: #1a0a2e;
@@ -16,6 +17,7 @@ body {
 
 /* ===== HEADER ===== */
 header {
+  transition: transform 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,8 +26,6 @@ header {
   border-bottom: 2px solid #ff4500;
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   width: 100%;
   box-sizing: border-box;
@@ -295,6 +295,7 @@ footer p {
 
 /* ===== SCHOLARSHIPS PAGE ===== */
 .page-hero {
+  margin-top: 76px;
   text-align: center;
   padding: 50px 20px 30px;
   background: linear-gradient(135deg, #2d1f5e, #3b1a6e, #ff4500);
@@ -585,6 +586,7 @@ footer p {
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align: start;
+    flex-shrink: 0;
   }
 
   nav {
@@ -681,6 +683,7 @@ footer p {
   max-width: 300px;
   flex-shrink: 0;
   scroll-snap-align: end;
+  flex-shrink: 0;
 }
 
 #open-scholarships-grid .btn-details {

@@ -127,4 +127,9 @@ window.addEventListener('scroll', () => {
   } else {
     header.classList.remove('scrolled');
   }
+  if (window.scrollY > 80) {
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    header.style.transform = 'translateY(0)';
+  }
 });
