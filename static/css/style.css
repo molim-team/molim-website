@@ -41,7 +41,7 @@ header.scrolled .logo-img {
 
 .logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   line-height: 1;
 }
 
@@ -575,8 +575,8 @@ footer p {
     padding: 12px 10px;
   }
   #open-scholarships-grid .card{
-    min-width: 260px;
-    max-width: 260px;
+    min-width: 82%;
+    max-width: 82%;
   }
 
   nav {
@@ -669,8 +669,8 @@ footer p {
 }
 
 #open-scholarships-grid .card {
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 300px;
+  max-width: 300px;
   flex-shrink: 0;
   scroll-snap-align: end;
 }
@@ -890,4 +890,21 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  .menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+}
 }
