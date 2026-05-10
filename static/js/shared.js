@@ -1,27 +1,32 @@
-// قائمة الهامبرغر
-function toggleMenu() {
-  const nav = document.getElementById('main-nav');
-  nav.classList.toggle('open');
+
+
+// --- إضافة منطق الوضع الليلي ---
+const darkModeToggle = document.getElementById('darkModeToggle');
+
+// 1. دالة التبديل
+function toggleDarkMode() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme); // حفظ الاختيار
+  updateToggleIcon(newTheme);
 }
 
-// زر العودة للأعلى
-const btn = document.createElement('button');
-btn.id = 'back-to-top';
-btn.innerHTML = '↑';
-document.body.appendChild(btn);
-
-btn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Header scroll effect
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('header');
-  if (header) {
-    if (window.scrollY > 80) {
-      header.style.transform = 'translateY(-100%)';
-    } else {
-      header.style.transform = 'translateY(0)';
-    }
+// 2. تحديث الأيقونة
+function updateToggleIcon(theme) {
+  if (darkModeToggle) {
+    darkModeToggle.innerHTML = theme === 'dark' ? '☀️' : '🌙';
   }
-});
+}
+
+// 3. التحقق من التفضيلات المحفوظة عند تحميل الصفحة
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateToggleIcon(savedTheme);
+
+// 4. ربط الزر بالدالة
+if (darkModeToggle) {
+  darkModeToggle.addEventListener('click', toggleDarkMode);
+}
+
