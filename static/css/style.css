@@ -871,8 +871,8 @@ footer p {
   }
 
   #open-scholarships-grid .card {
-    min-width: 82%;
-    max-width: 82%;
+    min-width: 70%;
+    max-width: 70%;
     scroll-snap-align: start;
     flex-shrink: 0;
   }
@@ -1044,6 +1044,7 @@ footer p {
 }
 
 .slider-btn {
+  display: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1087,6 +1088,7 @@ footer p {
   gap: 20px;
   padding: 0 20px 20px 20px;
   direction: rtl;
+  scroll-behavior: smooth;
 }
 
 #open-scholarships-grid::-webkit-scrollbar {
