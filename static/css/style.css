@@ -871,8 +871,8 @@ footer p {
   }
 
   #open-scholarships-grid .card {
-    min-width: 78%;
-    max-width: 78%;
+    min-width: 68%;
+    max-width: 68%;
     scroll-snap-align: start;
     flex-shrink: 0;
   }
