@@ -1,5 +1,5 @@
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+const pathParts = window.location.pathname.split('/');
+const id = pathParts[pathParts.length - 1];
 
 fetch('data/scholarships.json?v=' + Date.now())
   .then(res => res.json())
