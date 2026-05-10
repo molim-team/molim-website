@@ -70,11 +70,11 @@ document.getElementById('filter-status').addEventListener('change', filterCards)
 document.getElementById('filter-degree').addEventListener('change', filterCards);
 
 function shareScholarship(id, name, country) {
-  const url = `${window.location.origin}/${id}\n\n`;
+  const url = `${window.location.origin}/${id}`;
   if (navigator.share) {
     navigator.share({
       title: `منحة ${name}`,
-      text: `🎓 اكتشف منحة ${name} في ${country} على منصة مُلم!`,
+      text: `🎓 اكتشف منحة ${name} في ${country} على منصة مُلم!/n/n`,
       url: url
     });
   } else {
