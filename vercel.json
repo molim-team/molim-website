@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/:id",
+      "destination": "/scholarship.html?id=:id"
+    }
+  ]
+}
