@@ -74,7 +74,7 @@ function shareScholarship(id, name, country) {
   if (navigator.share) {
     navigator.share({
       title: `منحة ${name}`,
-      text: `🎓 اكتشف منحة ${name} في ${country} على منصة مُلم!/n/n`,
+      text: `🎓 اكتشف منحة ${name} في ${country} على منصة مُلم!`,
       url: url
     });
   } else {
