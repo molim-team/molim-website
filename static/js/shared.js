@@ -248,7 +248,7 @@ async function sendToLlamam() {
   document.getElementById('llamam-messages').scrollTop = document.getElementById('llamam-messages').scrollHeight;
 
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('https://molim.team/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
