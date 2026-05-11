@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        model: "claude-3-5-sonnet-20240620",
+        model: "claude-sonnet-4-5",
         max_tokens: 1024,
         system: "أنت مساعد ذكي اسمك لمام في منصة ملم. ردودك ودودة وباللهجة البيضاء وتهتم بالمنح الدراسية.",
         messages: [{ role: "user", content: message }],
