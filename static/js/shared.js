@@ -252,7 +252,6 @@ async function sendToLlamam() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: text,
         history: llamamHistory
       })
     });
