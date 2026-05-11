@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+  const GEMINI_API_KEY = 'AIzaSyCBQow6rPm-xenlk1LtrUPkYof9srq4d-o';
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -73,8 +74,12 @@ export default async function handler(req, res) {
     // ============================================
     // طلب Gemini
     // ============================================
+      if (!GEMINI_API_KEY) {
+        console.error('Missing GEMINI_API_KEY');
+        return res.status(500).json({ error: 'GEMINI_API_KEY غير معرف. أضفه في إعدادات البيئة.' });
+      }
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?key=${process.env.GEMINI_API_KEY}&alt=sse`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?key=${GEMINI_API_KEY}&alt=sse`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
