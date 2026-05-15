@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مُلم | حسابي</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    .profile-container {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 6px;
+    }
+    .profile-email {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .profile-verified {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .profile-verified.yes {
+      background: #f0fff4;
+      color: #27ae60;
+    }
+    .profile-verified.no {
+      background: #fff0f0;
+      color: #c0392b;
+    }
+    .profile-divider {
+      border: none;
+      border-top: 1px solid var(--card-border);
+      margin: 20px 0;
+    }
+    .profile-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+    .profile-info-row span:first-child {
+      color: #888;
+    }
+    .btn-logout {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      color: #e74c3c;
+      border: 1.5px solid #e74c3c;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-logout:hover {
+      background: #e74c3c;
+      color: white;
+    }
+    .not-logged-in {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+    }
+    .not-logged-in a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <img src="/static/logo.png" alt="مُلم" class="logo-img"/>
+      </a>
+    </div>
+    <nav id="main-nav">
+      <a href="/">الرئيسية</a>
+      <a href="/scholarships.html">المنح</a>
+      <a href="/faq.html">الأسئلة الشائعة</a>
+      <a href="/contact.html">تواصل معنا</a>
+    </nav>
+    <div class="header-left">
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-card" id="profile-content">
+      <p style="text-align:center; color:#aaa;">جاري التحميل...</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="/static/logo.png" alt="مُلم" class="footer-logo"/>
+        <p>منصتك الأولى لاكتشاف المنح الدراسية حول العالم</p>
+      </div>
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="/">الرئيسية</a>
+        <a href="/scholarships.html">جميع المنح</a>
+        <a href="/faq.html">الأسئلة الشائعة</a>
+        <a href="/contact.html">تواصل معنا</a>
+      </div>
+      <div class="footer-social">
+        <h4>تواصل معنا</h4>
+        <a href="https://t.me/molim_ContactBot" target="_blank"> الدعم الفني - تليجرام</a>
+        <a href="mailto:molim.team@gmail.com"> molim.team@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>مُلم © 2026 | جميع الحقوق محفوظة | <a href="/privacy.html" style="color:#ccc;">سياسة الخصوصية</a></p>
+    </div>
+  </footer>
+
+  <script src="/static/js/shared.js"></script>
+  <script type="module">
+    import { auth } from '/static/js/firebase-config.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      const content = document.getElementById('profile-content');
+
+      if (!user) {
+        content.innerHTML = `
+          <div class="not-logged-in">
+            <p style="font-size:3rem;">👤</p>
+            <p style="font-size:1.1rem; margin-bottom:16px;">أنت غير مسجل الدخول</p>
+            <a href="/login.html">تسجيل الدخول</a>
+            &nbsp;|&nbsp;
+            <a href="/register.html">إنشاء حساب</a>
+          </div>
+        `;
+        return;
+      }
+
+      const name = user.displayName || 'مستخدم';
+      const firstLetter = name.charAt(0);
+      const joinDate = user.metadata.creationTime
+        ? new Date(user.metadata.creationTime).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
+        : '—';
+
+      content.innerHTML = `
+        <div class="profile-avatar">${firstLetter}</div>
+        <div class="profile-name">${name}</div>
+        <div class="profile-email">${user.email}</div>
+        <div class="profile-verified ${user.emailVerified ? 'yes' : 'no'}">
+          ${user.emailVerified ? '✅ البريد مؤكد' : '⚠️ البريد غير مؤكد'}
+        </div>
+        <hr class="profile-divider"/>
+        <div class="profile-info-row">
+          <span>تاريخ الانضمام</span>
+          <span>${joinDate}</span>
+        </div>
+        <button class="btn-logout" onclick="logoutUser()">🚪 تسجيل الخروج</button>
+      `;
+    });
+
+    window.logoutUser = async function() {
+      await signOut(auth);
+      window.location.href = '/index.html';
+    };
+  </script>
+  <script type="module" src="/static/js/auth-state.js"></script>
+
+</body>
+</html>

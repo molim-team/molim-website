@@ -30,7 +30,7 @@ fetch('/data/scholarships.json?v=' + Date.now())
           👥 قروب المنحة
         </a>
         <a href="${s.discussionLink}" target="_blank" class="btn-main btn-split-half">
-          💬 قروب النقاش
+          💬 مناقشة المنحة 
         </a>
       </div>
     ` : '';

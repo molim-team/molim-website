@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مُلم | تسجيل الدخول</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    .auth-container {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .auth-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .auth-card h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .auth-card p.subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: var(--bg-color);
+      color: var(--text-color);
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    .btn-auth {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .btn-auth:hover {
+      background: #c94008;
+    }
+    .btn-auth:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    .auth-switch {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    .auth-switch a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .forgot-password {
+      text-align: left;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+    .forgot-password a {
+      color: #888;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .forgot-password a:hover {
+      color: var(--primary-color);
+    }
+    .auth-msg {
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .auth-msg.error {
+      background: #fff0f0;
+      color: #c0392b;
+      display: block;
+    }
+    .auth-msg.success {
+      background: #f0fff4;
+      color: #27ae60;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <img src="/static/logo.png" alt="مُلم" class="logo-img"/>
+      </a>
+    </div>
+    <nav id="main-nav">
+      <a href="/">الرئيسية</a>
+      <a href="/scholarships.html">المنح</a>
+      <a href="quiz.html">اكتشف التخصص المناسب لك</a>
+      <a href="/faq.html">الأسئلة الشائعة</a>
+      <a href="/contact.html">تواصل معنا</a>
+    </nav>
+    <div class="header-left">
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>👋 أهلاً بك</h1>
+      <p class="subtitle">سجّل دخولك للوصول إلى حسابك</p>
+
+      <div id="auth-msg" class="auth-msg"></div>
+
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="email" placeholder="example@email.com" />
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" id="password" placeholder="كلمة المرور" />
+      </div>
+
+      <div class="forgot-password">
+        <a href="#" onclick="forgotPassword()">نسيت كلمة المرور؟</a>
+      </div>
+
+      <button class="btn-auth" id="login-btn" onclick="loginUser()">تسجيل الدخول</button>
+
+      <div class="auth-switch">
+        ما عندك حساب؟ <a href="/register.html">إنشاء حساب جديد</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="/static/logo.png" alt="مُلم" class="footer-logo"/>
+        <p>منصتك الأولى لاكتشاف المنح الدراسية حول العالم</p>
+      </div>
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="/">الرئيسية</a>
+        <a href="/scholarships.html">جميع المنح</a>
+        <a href="/faq.html">الأسئلة الشائعة</a>
+        <a href="/contact.html">تواصل معنا</a>
+      </div>
+      <div class="footer-social">
+        <h4>تواصل معنا</h4>
+        <a href="https://t.me/molim_ContactBot" target="_blank"> الدعم الفني - تليجرام</a>
+        <a href="mailto:molim.team@gmail.com"> molim.team@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>مُلم © 2026 | جميع الحقوق محفوظة | <a href="/privacy.html" style="color:#ccc;">سياسة الخصوصية</a></p>
+    </div>
+  </footer>
+
+  <script src="/static/js/shared.js"></script>
+  <script type="module">
+    import { auth } from '/static/js/firebase-config.js';
+    import { signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    window.loginUser = async function() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const msg = document.getElementById('auth-msg');
+      const btn = document.getElementById('login-btn');
+
+      msg.className = 'auth-msg';
+      msg.textContent = '';
+
+      if (!email || !password) {
+        msg.className = 'auth-msg error';
+        msg.textContent = '⚠️ يرجى تعبئة جميع الحقول';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'جاري تسجيل الدخول...';
+
+      try {
+       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+       const user = userCredential.user;
+
+        if (!user.emailVerified) {
+         await signOut(auth);
+          msg.className = 'auth-msg error';
+          msg.textContent = '⚠️ يرجى تأكيد بريدك الإلكتروني أولاً، تحقق من صندوق الوارد';
+          btn.disabled = false;
+          btn.textContent = 'تسجيل الدخول';
+         return;
+        }
+
+        msg.className = 'auth-msg success';
+        msg.textContent = '✅ تم تسجيل الدخول بنجاح! جاري التحويل...';
+        setTimeout(() => {
+          window.location.href = '/index.html';
+        }, 1500);
+
+      } catch (error) {
+        btn.disabled = false;
+        btn.textContent = 'تسجيل الدخول';
+
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+          msg.className = 'auth-msg error';
+          msg.textContent = '⚠️ البريد الإلكتروني أو كلمة المرور غير صحيحة';
+        } else if (error.code === 'auth/too-many-requests') {
+          msg.className = 'auth-msg error';
+          msg.textContent = '⚠️ محاولات كثيرة، حاول بعد قليل';
+        } else {
+          msg.className = 'auth-msg error';
+          msg.textContent = '⚠️ حدث خطأ، حاول مرة أخرى';
+        }
+      }
+    };
+
+    window.forgotPassword = async function() {
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('auth-msg');
+
+      if (!email) {
+        msg.className = 'auth-msg error';
+        msg.textContent = '⚠️ أدخل بريدك الإلكتروني أولاً';
+        return;
+      }
+
+      try {
+        await sendPasswordResetEmail(auth, email);
+        msg.className = 'auth-msg success';
+        msg.textContent = '✅ تم إرسال رابط إعادة تعيين كلمة المرور لبريدك';
+      } catch (error) {
+        msg.className = 'auth-msg error';
+        msg.textContent = '⚠️ تأكد من صحة البريد الإلكتروني';
+      }
+    };
+  </script>
+    <script type="module" src="/static/js/auth-state.js"></script>
+
+</body>
+</html>
