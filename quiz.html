@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VET8JF7N5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -102,14 +101,14 @@
     }
 
     /* ===== MAIN ===== */
-    main { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    main { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
 
     /* ===== INTRO ===== */
     .intro-screen { text-align: center; padding: 3rem 1rem; }
     .intro-icon { font-size: 4rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
     .intro-screen h1 { font-size: 2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.75rem; }
-    .intro-screen p { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+    .intro-screen p { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin: 0 auto 2rem; line-height: 1.7; }
     .intro-features { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .intro-feature {
       background: var(--card-bg); border: 1px solid var(--card-border);
@@ -118,28 +117,21 @@
       box-shadow: var(--card-shadow);
     }
 
-    /* ===== PAST RESULTS SCREEN ===== */
+    /* ===== PAST RESULTS ===== */
     .past-results-screen { display: none; }
-    .past-results-screen h2 {
-      font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem; text-align: center;
-    }
-    .past-results-screen .subtitle {
-      color: var(--muted); font-size: 0.9rem; text-align: center; margin-bottom: 2rem;
-    }
+    .past-results-screen h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem; text-align: center; }
+    .past-results-screen .subtitle { color: var(--muted); font-size: 0.9rem; text-align: center; margin-bottom: 2rem; }
     .past-quiz-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
     .past-quiz-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 16px; padding: 1.25rem 1.5rem;
-      box-shadow: var(--card-shadow); cursor: pointer;
-      transition: all 0.2s ease;
+      box-shadow: var(--card-shadow); cursor: pointer; transition: all 0.2s ease;
     }
     .past-quiz-card:hover { border-color: var(--primary-color); transform: translateY(-2px); }
     .past-quiz-card .quiz-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
     .past-quiz-card .quiz-top { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
     .past-quiz-card .quiz-others { font-size: 0.82rem; color: var(--muted); }
     .past-results-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ===== PAST SINGLE RESULT ===== */
     .past-single-screen { display: none; }
 
     /* ===== QUIZ ===== */
@@ -155,29 +147,16 @@
       transition: width 0.5s cubic-bezier(.4,0,.2,1);
     }
     .progress-label { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.75rem; text-align: left; }
-
     .question-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 20px; padding: 2rem 2rem 1.5rem;
       box-shadow: var(--card-shadow); animation: slideIn 0.35s ease;
     }
     @keyframes slideIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-
-    .q-step {
-      font-size: 0.78rem; font-weight: 700; color: var(--primary-color);
-      margin-bottom: 0.75rem; letter-spacing: 0.04em;
-    }
-    .q-text {
-      font-size: 1.15rem; font-weight: 700;
-      color: var(--text-color); margin-bottom: 0.4rem; line-height: 1.6;
-    }
-    .q-hint {
-      font-size: 0.8rem; color: var(--muted);
-      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.35rem;
-    }
-
+    .q-step { font-size: 0.78rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.75rem; letter-spacing: 0.04em; }
+    .q-text { font-size: 1.15rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.4rem; line-height: 1.6; }
+    .q-hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.35rem; }
     .options-list { display: flex; flex-direction: column; gap: 0.7rem; }
-
     .option-btn {
       background: var(--bg-color); border: 2px solid var(--card-border);
       border-radius: 13px; padding: 0.9rem 1.15rem;
@@ -188,31 +167,18 @@
     }
     .option-btn .check-box {
       width: 20px; height: 20px; border-radius: 5px;
-      border: 2px solid var(--card-border);
-      flex-shrink: 0; margin-top: 2px;
+      border: 2px solid var(--card-border); flex-shrink: 0; margin-top: 2px;
       display: flex; align-items: center; justify-content: center;
       transition: all 0.2s ease; background: transparent;
       font-size: 0.75rem; color: #fff;
     }
-    .option-btn:hover {
-      border-color: var(--primary-color);
-      background: rgba(255,69,0,0.04);
-    }
+    .option-btn:hover { border-color: var(--primary-color); background: rgba(255,69,0,0.04); }
     .option-btn:hover .check-box { border-color: var(--primary-color); }
-    .option-btn.selected {
-      border-color: var(--primary-color);
-      background: rgba(255,69,0,0.08);
-    }
-    .option-btn.selected .check-box {
-      background: var(--primary-color); border-color: var(--primary-color);
-    }
+    .option-btn.selected { border-color: var(--primary-color); background: rgba(255,69,0,0.08); }
+    .option-btn.selected .check-box { background: var(--primary-color); border-color: var(--primary-color); }
     .option-btn.selected .check-box::after { content: '✓'; color: #fff; font-weight: 700; }
     .option-btn.dimmed { opacity: 0.4; pointer-events: none; }
-
-    .quiz-nav {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-top: 1.75rem; gap: 1rem;
-    }
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.75rem; gap: 1rem; }
     .btn-primary {
       background: var(--primary-color); color: #fff; border: none;
       border-radius: 12px; padding: 0.85rem 2rem;
@@ -244,8 +210,7 @@
     .major-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 16px; padding: 1.25rem 1.5rem;
-      box-shadow: var(--card-shadow);
-      display: flex; align-items: center; gap: 1rem;
+      box-shadow: var(--card-shadow); display: flex; align-items: center; gap: 1rem;
       animation: slideIn 0.4s ease both;
     }
     .major-card:nth-child(1){animation-delay:.05s}
@@ -253,50 +218,26 @@
     .major-card:nth-child(3){animation-delay:.19s}
     .major-card:nth-child(4){animation-delay:.26s}
     .major-card:nth-child(5){animation-delay:.33s}
-    .major-card.top-pick {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 2px rgba(255,69,0,0.15), var(--card-shadow);
-    }
-    .major-rank {
-      font-size: 1.6rem; width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
+    .major-card.top-pick { border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(255,69,0,0.15), var(--card-shadow); }
+    .major-rank { font-size: 1.6rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .major-info { flex: 1; }
-    .major-field {
-      font-size: 0.72rem; color: var(--primary-color); font-weight: 700;
-      margin-bottom: 0.2rem; letter-spacing: 0.04em; text-transform: uppercase;
-    }
+    .major-field { font-size: 0.72rem; color: var(--primary-color); font-weight: 700; margin-bottom: 0.2rem; letter-spacing: 0.04em; text-transform: uppercase; }
     .major-name { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.3rem; }
     .major-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
-    .pct-bar-wrap {
-      background: var(--card-border); border-radius: 99px;
-      height: 5px; margin-top: 0.5rem; overflow: hidden;
-    }
-    .pct-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary-color), #ff6a35);
-      border-radius: 99px; transition: width 0.9s cubic-bezier(.4,0,.2,1);
-    }
+    .pct-bar-wrap { background: var(--card-border); border-radius: 99px; height: 5px; margin-top: 0.5rem; overflow: hidden; }
+    .pct-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), #ff6a35); border-radius: 99px; transition: width 0.9s cubic-bezier(.4,0,.2,1); }
     .major-pct-wrap { text-align: center; min-width: 54px; }
     .major-pct { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: block; }
     .major-pct-label { font-size: 0.72rem; color: var(--muted); }
     .results-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    .loading-spinner {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0.75rem; padding: 3rem; color: var(--muted); font-size: 0.95rem;
-    }
-    .spinner {
-      width: 24px; height: 24px; border: 3px solid var(--card-border);
-      border-top-color: var(--primary-color); border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
+    .loading-spinner { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 3rem; color: var(--muted); font-size: 0.95rem; }
+    .spinner { width: 24px; height: 24px; border: 3px solid var(--card-border); border-top-color: var(--primary-color); border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
   <div class="header-inner">
     <a href="index.html" class="logo">
@@ -316,33 +257,29 @@
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
 <main>
-
-  <!-- شاشة التحميل الأولية -->
   <div id="loadingScreen" class="loading-spinner">
     <div class="spinner"></div>
     <span>جارٍ التحميل...</span>
   </div>
 
-  <!-- INTRO -->
   <div class="intro-screen" id="introScreen" style="display:none;">
     <span class="intro-icon">🧭</span>
-    <h1>اكتشف تخصصك المثالي</h1>
+    <h1>اكتشف تخصصك المثالي بعمق</h1>
     <p>
-      خمسة عشر سؤالاً مبنياً على مواقف يومية حقيقية — لا توجد إجابة صواب أو خطأ.
-      يمكنك اختيار إجابة أو إجابتين تعكسان طبيعتك الفعلية، والنتائج ترشّح لك التخصصات الأدق توافقاً مع شخصيتك.
+      عشرون سؤالاً نفسياً وعملياً متطوراً — لا تقيس فقط ما تحبه، بل كيف تفكر تحت الضغط، وكيف تتخذ القرارات، وما الذي يجذب انتباهك. 
+      يمكنك اختيار إجابة أو إجابتين تعكسان طبيعتك الحقيقية.
     </p>
     <div class="intro-features">
-      <div class="intro-feature">⏱️ خمس دقائق تقريباً</div>
-      <div class="intro-feature">🎯 خمسة عشر سؤالاً واقعياً</div>
+      <div class="intro-feature">⏱️ سبع دقائق تقريباً</div>
+      <div class="intro-feature">🧠 أبعاد نفسية وعلمية</div>
       <div class="intro-feature">☑️ اختر حتى إجابتين</div>
-      <div class="intro-feature">📊 نسب توافق دقيقة</div>
+      <div class="intro-feature">📊 تحليل منطقي متوازن</div>
+       <div class="intro-feature">🎓 أكثر من ٣٥ تخصصاً</div>
     </div>
     <button class="btn-primary" onclick="startQuiz()">ابدأ الاختبار</button>
   </div>
 
-  <!-- شاشة الاختبارات السابقة (للمستخدمين المسجلين) -->
   <div class="past-results-screen" id="pastResultsScreen" style="display:none;">
     <div style="text-align:center; margin-bottom:2rem;">
       <span style="font-size:3rem; display:block; margin-bottom:0.75rem;">📋</span>
@@ -355,7 +292,6 @@
     </div>
   </div>
 
-  <!-- نتائج اختبار سابق -->
   <div class="past-single-screen" id="pastSingleScreen" style="display:none;">
     <div class="results-header">
       <span class="trophy">🏆</span>
@@ -369,7 +305,6 @@
     </div>
   </div>
 
-  <!-- QUIZ -->
   <div class="quiz-screen" id="quizScreen" style="display:none;">
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
@@ -387,12 +322,11 @@
     </div>
   </div>
 
-  <!-- RESULTS -->
   <div class="results-screen" id="resultsScreen" style="display:none;">
     <div class="results-header">
       <span class="trophy">🏆</span>
       <h2>نتائجك جاهزة!</h2>
-      <p>بناءً على إجاباتك، هذه التخصصات الأنسب لك مرتبةً حسب نسبة التوافق:</p>
+      <p>بناءً على تحليلك السلوكي الشامل، هذه التخصصات الأنسب لطريقتك في التفكير:</p>
     </div>
     <div class="save-notice" id="saveNotice" style="display:none;"></div>
     <div class="majors-list" id="majorsList"></div>
@@ -401,10 +335,8 @@
       <button class="btn-secondary" onclick="restartQuiz()">أعد الاختبار</button>
     </div>
   </div>
-
 </main>
 
-<!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -429,7 +361,6 @@
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // نجعل هذه الدوال متاحة للكود الرئيسي
   window._firebaseReady = false;
   window._currentUser = null;
   window._db = db;
@@ -460,211 +391,273 @@ document.getElementById('hamburger').addEventListener('click', () =>
   document.getElementById('mainNav').classList.toggle('open')
 );
 
-/* ===== التخصصات ===== */
+/* ===================================================
+                     التخصصات 
+   =================================================== */
 const majors = {
-  cs_ai:     { name: 'الذكاء الاصطناعي وعلوم البيانات',    field: 'علوم الحاسب', desc: 'بناء نماذج التعلم الآلي، تحليل البيانات الضخمة، ومعالجة اللغة الطبيعية' },
-  cs_cyber:  { name: 'الأمن السيبراني والشبكات',           field: 'علوم الحاسب', desc: 'حماية الأنظمة من الاختراق، تحليل الثغرات، وإدارة البنية التحتية للشبكات' },
-  cs_soft:   { name: 'هندسة البرمجيات وتطوير التطبيقات',  field: 'علوم الحاسب', desc: 'تصميم وبناء التطبيقات والأنظمة البرمجية الكبيرة' },
-  cs_hw:     { name: 'هندسة الحاسب والأجهزة المدمجة',     field: 'علوم الحاسب', desc: 'تصميم المعالجات والدوائر المدمجة والأجهزة الإلكترونية الذكية' },
-  eng_civil: { name: 'الهندسة المدنية والبنية التحتية',   field: 'الهندسة', desc: 'تصميم الجسور والطرق والسدود وشبكات المياه والصرف الصحي' },
-  eng_arch:  { name: 'العمارة والتخطيط العمراني',          field: 'الهندسة', desc: 'تصميم المباني والمدن الذكية والفراغات المعمارية الوظيفية والجمالية' },
-  eng_elec:  { name: 'الهندسة الكهربائية والإلكترونية',   field: 'الهندسة', desc: 'أنظمة الطاقة، الدوائر الإلكترونية، والاتصالات اللاسلكية' },
-  eng_chem:  { name: 'الهندسة الكيميائية والصناعية',      field: 'الهندسة', desc: 'تصميم المصانع، العمليات الكيميائية، وتصنيع المنتجات على نطاق واسع' },
-  eng_mech:  { name: 'الهندسة الميكانيكية والروبوتات',    field: 'الهندسة', desc: 'تصميم الآلات، المحركات، وأنظمة الروبوتات والأتمتة' },
-  medicine:  { name: 'الطب البشري والتخصصات السريرية',    field: 'الصحة', desc: 'تشخيص الأمراض وعلاجها والتعامل المباشر مع المرضى في بيئة طبية' },
-  pharmacy:  { name: 'الصيدلة والعلوم الصحية',            field: 'الصحة', desc: 'الأدوية وتركيبها وتأثيراتها والإشراف على العلاج الدوائي' },
-  business:  { name: 'إدارة الأعمال وريادة الشركات',      field: 'الأعمال', desc: 'بناء الشركات، التخطيط الاستراتيجي، والإدارة المالية والتسويقية' },
-  economics: { name: 'الاقتصاد والمالية والمحاسبة',       field: 'الأعمال', desc: 'تحليل الأسواق، إدارة الأصول المالية، والمحاسبة المعتمدة' },
-  law:       { name: 'القانون والعلوم السياسية',           field: 'القانون والمجتمع', desc: 'التقاضي، صياغة الأنظمة، والدبلوماسية والسياسات العامة' },
-  social:    { name: 'علم النفس والخدمة الاجتماعية',      field: 'القانون والمجتمع', desc: 'فهم السلوك الإنساني وتقديم الدعم النفسي والاجتماعي' },
-  media:     { name: 'الإعلام والصحافة والعلاقات العامة', field: 'الآداب والإعلام', desc: 'صناعة المحتوى الإعلامي، الصحافة الاستقصائية، وإدارة السمعة' },
-  arts:      { name: 'الأدب والترجمة واللغويات',          field: 'الآداب والإعلام', desc: 'الكتابة الإبداعية، الترجمة بين اللغات، والبحث في اللسانيات' },
-  design:    { name: 'التصميم الجرافيكي وتجربة المستخدم', field: 'التصميم والفنون', desc: 'تصميم الهوية البصرية، واجهات التطبيقات، وتجربة المستخدم الرقمية' },
-  science:   { name: 'العلوم التطبيقية والبحث العلمي',    field: 'العلوم البحثية', desc: 'الكيمياء، الفيزياء، علم الأحياء، والبحث في المختبرات' },
+  cs_ai:       { name: 'الذكاء الاصطناعي وعلوم البيانات',       field: 'علوم الحاسب', desc: 'بناء نماذج التعلم الآلي، تحليل البيانات الضخمة، ومعالجة اللغة الطبيعية' },
+  cs_soft:     { name: 'هندسة البرمجيات وتطوير التطبيقات',      field: 'علوم الحاسب', desc: 'تصميم وبناء التطبيقات والأنظمة البرمجية الكبيرة' },
+  cs_cyber:    { name: 'الأمن السيبراني والشبكات',              field: 'علوم الحاسب', desc: 'حماية الأنظمة من الاختراق، تحليل الثغرات، وإدارة البنية التحتية للشبكات' },
+  cs_hw:       { name: 'هندسة الحاسب والأجهزة المدمجة',        field: 'علوم الحاسب', desc: 'تصميم المعالجات والدوائر المدمجة والأجهزة الإلكترونية الذكية' },
+  eng_civil:   { name: 'الهندسة المدنية والبنية التحتية',      field: 'الهندسة', desc: 'تصميم الجسور والطرق والسدود وشبكات المياه والصرف الصحي' },
+  eng_arch:    { name: 'العمارة والتخطيط العمراني',             field: 'الهندسة', desc: 'تصميم المباني والمدن الذكية والفراغات المعمارية الوظيفية والجمالية' },
+  eng_elec:    { name: 'الهندسة الكهربائية والإلكترونية',      field: 'الهندسة', desc: 'أنظمة الطاقة، الدوائر الإلكترونية، والاتصالات اللاسلكية' },
+  eng_mech:    { name: 'الهندسة الميكانيكية والروبوتات',       field: 'الهندسة', desc: 'تصميم الآلات، المحركات، وأنظمة الروبوتات والأتمتة' },
+  eng_chem:    { name: 'الهندسة الكيميائية والصناعية',         field: 'الهندسة', desc: 'تصميم المصانع، العمليات الكيميائية، وتصنيع المنتجات على نطاق واسع' },
+  eng_environ: { name: 'الهندسة البيئية والاستدامة',           field: 'الهندسة', desc: 'معالجة المياه والهواء والتربة، والحلول الهندسية للتحديات البيئية' },
+  eng_food:    { name: 'هندسة الغذاء والصناعات الغذائية',      field: 'الهندسة', desc: 'تصميم خطوط الإنتاج الغذائي، ضمان جودة المنتجات، وعلوم التغذية التطبيقية' },
+  medicine:    { name: 'الطب البشري والتخصصات السريرية',       field: 'الطب والصحة', desc: 'تشخيص الأمراض وعلاجها والتعامل المباشر مع المرضى في بيئة طبية' },
+  dentistry:   { name: 'طب الأسنان وجراحة الفم',              field: 'الطب والصحة', desc: 'تشخيص وعلاج أمراض الأسنان والفكين والجراحة التجميلية والترميمية للأسنان' },
+  pharmacy:    { name: 'الصيدلة والعلوم الصيدلانية',           field: 'الطب والصحة', desc: 'الأدوية وتركيبها وتأثيراتها والإشراف على العلاج الدوائي' },
+  nursing:     { name: 'التمريض والعلوم الصحية',               field: 'الطب والصحة', desc: 'رعاية المرضى مباشرةً، متابعة الحالات السريرية، والعمل ضمن الفريق الطبي' },
+  med_lab:     { name: 'المختبرات الطبية والتحاليل',           field: 'الطب والصحة', desc: 'تحليل عينات الدم والأنسجة لتشخيص الأمراض واكتشاف العوامل المعدية' },
+  nutrition:   { name: 'التغذية والغذاء السريري',              field: 'الطب والصحة', desc: 'تصميم برامج التغذية العلاجية والوقائية ودراسة تأثير الغذاء على الصحة' },
+  business:    { name: 'إدارة الأعمال وريادة الشركات',         field: 'الأعمال', desc: 'بناء الشركات، التخطيط الاستراتيجي، والإدارة المالية والتسويقية' },
+  economics:   { name: 'الاقتصاد والمالية والمحاسبة',          field: 'الأعمال', desc: 'تحليل الأسواق، إدارة الأصول المالية، والمحاسبة المعتمدة' },
+  marketing:   { name: 'التسويق وإدارة العلامات التجارية',     field: 'الأعمال', desc: 'بناء هوية المنتجات، صياغة حملات إعلانية، وقراءة سلوك المستهلك' },
+  hotel:       { name: 'إدارة الضيافة والفنادق والسياحة',      field: 'الأعمال', desc: 'تشغيل الفنادق والمنتجعات السياحية والمطاعم وإدارة تجربة الضيف' },
+  law:         { name: 'القانون والعلوم السياسية',              field: 'القانون والمجتمع', desc: 'التقاضي، صياغة الأنظمة، والدبلوماسية والسياسات العامة' },
+  criminology: { name: 'العلوم الجنائية والتحقيق الجنائي',     field: 'القانون والمجتمع', desc: 'تحليل أدلة الجرائم، الطب الشرعي، وإجراءات التحقيق الجنائي والأمني' },
+  social:      { name: 'علم النفس والخدمة الاجتماعية',         field: 'القانون والمجتمع', desc: 'فهم السلوك الإنساني وتقديم الدعم النفسي والاجتماعي' },
+  sociology:   { name: 'علم الاجتماع والدراسات الإنسانية',     field: 'القانون والمجتمع', desc: 'دراسة المجتمعات والثقافات والظواهر الاجتماعية وتأثيرها على الأفراد' },
+  media:       { name: 'الإعلام والصحافة والعلاقات العامة',    field: 'الإعلام والفنون', desc: 'صناعة المحتوى الإعلامي، الصحافة الاستقصائية، وإدارة السمعة' },
+  arts:        { name: 'الأدب والترجمة واللغويات',             field: 'الإعلام والفنون', desc: 'الكتابة الإبداعية، الترجمة بين اللغات، والبحث في اللسانيات' },
+  design:      { name: 'التصميم الجرافيكي وتجربة المستخدم',    field: 'الإعلام والفنون', desc: 'تصميم الهوية البصرية، واجهات التطبيقات، وتجربة المستخدم الرقمية' },
+  film:        { name: 'الإنتاج الإعلامي والسينما والمونتاج',  field: 'الإعلام والفنون', desc: 'إنتاج الأفلام والمحتوى المرئي، الإخراج، والمونتاج السينمائي والرقمي' },
+  culinary:    { name: 'فنون الطهي وإدارة المطاعم',            field: 'الإعلام والفنون', desc: 'تعلم فنون الطبخ الاحترافي، إدارة المطابخ، وتصميم قوائم الطعام وتجربة الضيف' },
+  science:     { name: 'العلوم التطبيقية والبحث العلمي',       field: 'العلوم البحثية', desc: 'الكيمياء، الفيزياء، علم الأحياء، والبحث في المختبرات' },
+  biotech:     { name: 'التقنية الحيوية والجينوم',             field: 'العلوم البحثية', desc: 'الهندسة الوراثية، تطوير اللقاحات، وعلم الجينوم وتطبيقاته الطبية والزراعية' },
+  space:       { name: 'هندسة الفضاء والطيران',                field: 'العلوم البحثية', desc: 'تصميم الصواريخ والأقمار الاصطناعية والمركبات الجوية وأنظمة الملاحة' },
+  education:   { name: 'التربية وعلوم التعليم',                field: 'التربية والتعليم', desc: 'تصميم المناهج الدراسية وأساليب التدريس وتطوير بيئات التعلم' },
+  security:    { name: 'الأمن الوطني والعلوم الأمنية',         field: 'الأمن والدفاع', desc: 'إدارة الأزمات الأمنية، الاستخبارات، وحماية المنشآت الحيوية' },
+  agriculture: { name: 'الهندسة الزراعية وعلوم البيئة',       field: 'الزراعة والبيئة', desc: 'تطوير الإنتاج الزراعي، إدارة الموارد الطبيعية، والزراعة الذكية' },
 };
 
-/* ===== الأسئلة ===== */
+/* ===================================================
+               الأسئلة 
+   =================================================== */
 const MAX_SELECT = 2;
 
-const questions = [
+const questions = 
+
+ [
+  // ----------------------------------------------------
+  // الفئة 1: الاهتمامات الأولية والميول العامة (1 - 5)
+  // ----------------------------------------------------
   {
-    step: 'السؤال الأول من خمسة عشر',
-    text: 'توقف جهاز في المنزل عن العمل فجأة، ما الذي تفعله عادةً؟',
+    text: 'عند دخولك مبنىً ضخماً ومتطوراً لأول مرة، ما الذي يثير انتباهك؟',
     options: [
-      { label: 'أفتحه وأحاول أن أفهم سبب المشكلة قبل أي شيء آخر', traits: { cs_hw:3, eng_mech:3, eng_elec:2 } },
-      { label: 'أبحث على الإنترنت عن تعليمات ثم أتبعها خطوة بخطوة', traits: { cs_soft:2, science:2, pharmacy:1 } },
-      { label: 'أتصل بشخص أثق بخبرته ليساعدني أو يشرح لي', traits: { social:2, medicine:2, law:1 } },
-      { label: 'أقيّم ما إذا كان الأمر يستحق الإصلاح أو الاستبدال وأحسب التكلفة', traits: { business:3, economics:3, eng_civil:1 } },
+      { label: 'التصميم المعماري، وتوزيع المساحات والإضاءة الطبيعية.', traits: { eng_arch: 3, eng_civil: 2 } },
+      { label: 'كفاءة الأنظمة الميكانيكية الذكية والسلالم الكهربائية.', traits: { eng_mech: 3, cs_hw: 2 } },
+      { label: 'أنظمة الأمن والتحقق، ومخارج الطوارئ وغرف المراقبة.', traits: { security: 3, cs_cyber: 2, criminology: 1 } },
+      { label: 'الحركة التجارية، هوية المحلات، والفرص الاستثمارية بالمكان.', traits: { business: 3, marketing: 2, economics: 2 } },
     ]
   },
   {
-    step: 'السؤال الثاني من خمسة عشر',
-    text: 'فتحت كتاباً ستقرأه في وقت فراغك، أي هذه الأنواع تختار؟',
+    text: 'إذا أتيحت لك فرصة اختيار كتاب لقراءته في عطلتك، ماذا تختار؟',
     options: [
-      { label: 'رواية أو قصة تحمل شخصيات معقدة ومواقف إنسانية', traits: { arts:3, social:3, media:2 } },
-      { label: 'كتاب عن تجارب رواد أعمال أو كيف نجحت شركة معينة', traits: { business:3, economics:2, cs_soft:1 } },
-      { label: 'كتاب علمي أو تقني يشرح كيف تعمل ظاهرة أو تقنية', traits: { science:3, cs_ai:3, eng_elec:2 } },
-      { label: 'كتاب عن التاريخ أو السياسة أو قضايا اجتماعية', traits: { law:3, social:2, media:3 } },
+      { label: 'قصة تحقيق جنائي معقدة تعتمد على الأدلة والطب الشرعي.', traits: { criminology: 3, law: 3 } },
+      { label: 'كتاب عن الهندسة الوراثية، الجينوم، وصناعة أدوية المستقبل.', traits: { biotech: 3, science: 2, pharmacy: 2 } },
+      { label: 'استراتيجيات بناء الإمبراطوريات المالية وإدارة الأسواق والأصول.', traits: { economics: 3, business: 3 } },
+      { label: 'دراسة عميقة لسلوك المجتمعات وتأثير الثقافة على الأفراد عبر التاريخ.', traits: { sociology: 3, social: 2 } },
     ]
   },
   {
-    step: 'السؤال الثالث من خمسة عشر',
-    text: 'طُلب منك إعداد عرض تقديمي لمشروع مشترك، أي دور تجد نفسك منجذباً إليه تلقائياً؟',
+    text: 'في مشروع دراسي جماعي، أي الأدوار التالية تفضل استلامه؟',
     options: [
-      { label: 'جمع البيانات والأرقام وبناء الحجج المنطقية التي تدعم الفكرة', traits: { science:3, cs_ai:3, economics:3, law:2 } },
-      { label: 'تصميم الشرائح وتنظيم المعلومات بطريقة جذابة بصرياً', traits: { design:3, media:3, eng_arch:2 } },
-      { label: 'التحدث أمام الجمهور وإقناعهم بالفكرة', traits: { law:3, business:3, social:2 } },
-      { label: 'التأكد من أن الخطة قابلة للتنفيذ فعلياً وتحديد الموارد اللازمة', traits: { eng_civil:3, eng_mech:2, cs_soft:3 } },
+      { label: 'جمع البيانات والإحصاءات وبناء الجداول الرياضية الدقيقة.', traits: { science: 3, cs_ai: 3, economics: 2 } },
+      { label: 'تصميم العرض المرئي وتنسيق الألوان والواجهات الرقمية.', traits: { design: 3, eng_arch: 2 } },
+      { label: 'الإلقاء والتحدث أمام الجمهور، وإقناع لجنة التحكيم بأفكارنا.', traits: { law: 3, media: 3, marketing: 2 } },
+      { label: 'كتابة التقرير النهائي بأسلوب لغوي محترف وخالٍ من الأخطاء.', traits: { arts: 3, education: 2 } },
     ]
   },
   {
-    step: 'السؤال الرابع من خمسة عشر',
-    text: 'كنت في حفل أو تجمع وأصبح لديك وقت حر بين الحضور، ماذا تفعل؟',
+    text: 'لو مُنحت بطاقة دخول حصرية لكواليس أحد الأماكن، ماذا تختار؟',
     options: [
-      { label: 'أجلس مع شخص لا أعرفه وأبدأ محادثة للتعرف عليه', traits: { social:3, business:3, media:2 } },
-      { label: 'أتأمل المكان وتفاصيله المعمارية أو الجمالية', traits: { eng_arch:3, design:3, arts:2 } },
-      { label: 'أتحقق من هاتفي وأطلع على أخبار أو محتوى مهني يهمني', traits: { cs_soft:2, economics:2, law:2 } },
-      { label: 'أفضّل الجلوس بهدوء والتفكير في موضوع يشغل ذهني', traits: { science:3, cs_ai:3, arts:2 } },
+      { label: 'وكالة فضاء، لمشاهدة هندسة الصواريخ وأنظمة الملاحة الكونية.', traits: { space: 3, eng_mech: 2, science: 2 } },
+      { label: 'محكمة عليا أو مجلس الوزراء، لمتابعة السياسات والمرافعات الحساسة.', traits: { law: 3, criminology: 2, security: 2 } },
+      { label: 'استوديو سينمائي ضخم، لرؤية المونتاج وتصميم البيئات الرقمية.', traits: { film: 3, design: 2, arts: 2 } },
+      { label: 'غرفة العمليات والمختبرات، لمشاهدة أدق التدخلات الطبية والتشخيصية.', traits: { medicine: 3, dentistry: 2, med_lab: 3, pharmacy: 2 } },
     ]
   },
   {
-    step: 'السؤال الخامس من خمسة عشر',
-    text: 'أنهيت مهمة في العمل أو الدراسة وبقي لديك وقت قبل الموعد النهائي، ماذا تفعل تلقائياً؟',
+    text: 'لو شاركت في بناء مجتمع ريفي متكامل، ما المساهمة التي تختارها؟',
     options: [
-      { label: 'أراجع العمل مرة أخرى وأتحقق من الأرقام والتفاصيل للتأكد من دقتها', traits: { science:3, cs_ai:3, economics:3, pharmacy:2 } },
-      { label: 'أبدأ في تحسين شكل التقديم أو طريقة عرض المحتوى بصرياً', traits: { design:3, eng_arch:3, media:2 } },
-      { label: 'أستغله للتواصل مع زملاء أو أتابع ما يعمل عليه الآخرون', traits: { social:3, business:3, media:2 } },
-      { label: 'أبدأ في التفكير في المهمة التالية أو أضع خطة للمرحلة القادمة', traits: { eng_civil:3, cs_soft:3, business:2 } },
+      { label: 'تطوير النظم الزراعية الذكية والمحميات لإنتاج غذاء مستدام.', traits: { agriculture: 3, eng_food: 2, eng_environ: 2 } },
+      { label: 'إدارة المنظومة الصحية وتقديم الاستشارات الطبية والدوائية للأهالي.', traits: { medicine: 2, pharmacy: 3, nutrition: 3, nursing: 2 } },
+      { label: 'تصميم البنية التحتية وشبكات المياه والطاقة النظيفة والاتصالات.', traits: { eng_civil: 3, eng_elec: 3, cs_hw: 1 } },
+      { label: 'تأسيس قطاع الفنادق والضيافة وفنون الطهي لتنشيط السياحة المحلية.', traits: { hotel: 3, culinary: 3, business: 2 } },
+    ]
+  },
+
+  // ----------------------------------------------------
+  // الفئة 2: أسلوب حل المشكلات وإدارة المنظومات (6 - 10)
+  // ----------------------------------------------------
+  {
+    text: 'عندما تبدأ في حل مشكلة معقدة، ما هي الأداة التي ترتاح للاعتماد عليها أولاً؟',
+    options: [
+      { label: 'التحليل المنطقي وسطور الأكواد وفحص البيانات الرقمية.', traits: { cs_cyber: 3, cs_soft: 3, cs_ai: 2 } },
+      { label: 'تنظيم الموارد البشرية، توزيع الأدوار، وتنسيق الجهود الجماعية.', traits: { business: 3, education: 2, social: 2 } },
+      { label: 'التفكير الإبداعي البصري وتعديل الأشكال أو الواجهات لإيجاد بدائل.', traits: { design: 3, film: 2, marketing: 2 } },
+      { label: 'مراجعة بروتوكولات السلامة، تقييم المخاطر، وتأمين الموقع مادياً.', traits: { security: 3, eng_civil: 2, criminology: 2 } },
     ]
   },
   {
-    step: 'السؤال السادس من خمسة عشر',
-    text: 'خلال دراستك أو عملك، أي من هذه المهام كنت تنهيها بسرعة وبشكل جيد دون أن تشعر بثقلها؟',
+    text: 'لو وقعت أزمة صحية أو بيئية مفاجئة في منطقتك، كيف تبدأ مواجهتها؟',
     options: [
-      { label: 'كتابة تقارير أو تلخيص أفكار أو صياغة نصوص', traits: { arts:3, law:3, media:3 } },
-      { label: 'حل مسائل رياضية أو تحليل بيانات وجداول', traits: { cs_ai:3, science:3, economics:3, eng_mech:2 } },
-      { label: 'رسم مخططات أو تصميم شيء أو تنظيم مواد بصرياً', traits: { design:3, eng_arch:3, media:2 } },
-      { label: 'التنسيق مع أشخاص وتنظيم جداول أو اجتماعات', traits: { business:3, social:2, cs_soft:2 } },
+      { label: 'النزول الميداني للمستشفيات للإشراف المباشر على علاج المصابين وتوجيه التمريض.', traits: { medicine: 3, nursing: 3, dentistry: 2 } },
+      { label: 'التوجه للمختبرات فوراً لتحليل العينات ومعرفة السبب العلمي للأزمة.', traits: { med_lab: 3, science: 3, biotech: 3 } },
+      { label: 'إطلاق حملة إعلامية عاجلة لتوعية السكان وبث الطمأنينة عبر وسائل التواصل.', traits: { media: 3, marketing: 2, law: 2 } },
+      { label: 'مراجعة سلاسل الإمداد وهندسة التصنيع لضمان سلامة الأغذية والمياه.', traits: { eng_food: 3, nutrition: 2, agriculture: 2 } },
     ]
   },
   {
-    step: 'السؤال السابع من خمسة عشر',
-    text: 'أيٌّ من هذه المواضيع يجعلك تتحدث بحماس حتى وإن لم يسألك أحد؟',
+    text: 'أي نوع من أنواع "الحماية والتأمين" تشعر أنه يثير شغفك المهني أكثر؟',
     options: [
-      { label: 'مناقشة قرار سياسي أو ظلم اجتماعي أو قضية حقوقية', traits: { law:3, social:3, media:3 } },
-      { label: 'تقنية جديدة وتأثيرها المستقبلي على الحياة', traits: { cs_ai:3, cs_soft:3, science:2 } },
-      { label: 'مشروع تجاري أو فرصة استثمارية لاحظتها في السوق', traits: { business:3, economics:3, cs_soft:1 } },
-      { label: 'فيلم أو كتاب أو عمل فني وما يحمله من معانٍ', traits: { arts:3, design:2, social:2 } },
+      { label: 'الدفاع الرقمي وحماية الشبكات والأنظمة من الاختراقات الخبيثة.', traits: { cs_cyber: 3, cs_soft: 2 } },
+      { label: 'التحقيق الجنائي وجمع الأدلة المادية لكشف الحقائق وتطبيق القانون.', traits: { criminology: 3, law: 3 } },
+      { label: 'إدارة الأزمات الإعلامية وحماية السمعة التجارية والهوية المؤسسية.', traits: { marketing: 3, business: 2, design: 2 } },
+      { label: 'تأمين البنية التحتية المادية وشبكات الطاقة والاتصالات اللاسلكية.', traits: { eng_elec: 3, cs_hw: 3, security: 2 } },
     ]
   },
   {
-    step: 'السؤال الثامن من خمسة عشر',
-    text: 'اضطررت للعمل في مشروع طارئ طوال الليل، أي نوع من المهام تبقى منتجاً فيها حتى الساعات الأخيرة؟',
+    text: 'أي من الأنظمة المادية التالية تثير فضولك الهندسي لمعرفة آلية تشغيلها؟',
     options: [
-      { label: 'كتابة كود أو تحليل بيانات أو حل مشكلة تقنية', traits: { cs_soft:3, cs_ai:3, cs_cyber:3, cs_hw:2 } },
-      { label: 'كتابة نص أو مراجعة محتوى أو إعداد مادة إعلامية', traits: { arts:3, media:3, law:2 } },
-      { label: 'التصميم أو الرسم أو تنظيم المواد بشكل جمالي', traits: { design:3, eng_arch:3, media:2 } },
-      { label: 'التخطيط والتنسيق وإدارة المهام والتواصل مع الفريق', traits: { business:3, social:2, eng_civil:2 } },
+      { label: 'الأجزاء الميكانيكية المتحركة، كالمحركات الهيدروليكية والتروس الضخمة.', traits: { eng_mech: 3, space: 2 } },
+      { label: 'لوحات التحكم الرقمية، الدوائر الكهربائية، والمعالجات الدقيقة للأنظمة.', traits: { eng_elec: 3, cs_hw: 3 } },
+      { label: 'المناهج التعليمية التفاعلية، والوسائل التربوية التي تبني عقول الطلاب.', traits: { education: 3, science: 2, arts: 1 } },
+      { label: 'المركبات الكيميائية، وتأثير الغازات والسوائل على التوازن البيئي بالموقع.', traits: { eng_environ: 3, eng_chem: 3 } },
     ]
   },
   {
-    step: 'السؤال التاسع من خمسة عشر',
-    text: 'زرت معرضاً يضم قسماً علمياً وقسم فنوناً وقسماً تقنياً وقسماً اجتماعياً، أين تجد نفسك تقضي معظم الوقت؟',
+    text: 'عندما يقودك النقاش لاتخاذ قرار حاسم في العمل، ما المرجعية الأقوى بالنسبة لك؟',
     options: [
-      { label: 'القسم التقني: الروبوتات والأجهزة والاختراعات التكنولوجية', traits: { cs_hw:3, eng_mech:3, eng_elec:3, cs_soft:2 } },
-      { label: 'القسم العلمي: التجارب وعلم الأحياء والفيزياء والكيمياء', traits: { science:3, medicine:3, pharmacy:2 } },
-      { label: 'قسم الفنون: الأعمال الإبداعية والتصاميم والمقتنيات', traits: { design:3, arts:3, eng_arch:2 } },
-      { label: 'القسم الاجتماعي: الخرائط والتاريخ وقضايا المجتمعات', traits: { law:3, social:3, media:2 } },
+      { label: 'الاعتبارات الإنسانية، التفاهم الودي، ومراعاة الجوانب النفسية والاجتماعية.', traits: { social: 3, sociology: 2 } },
+      { label: 'اللوائح التنظيمية الصارمة، نصوص العقود، والمعايير القانونية المكتوبة.', traits: { law: 3, criminology: 1 } },
+      { label: 'لغة الأرقام والمؤشرات المالية، وحسابات الربح والخسارة الاقتصادية.', traits: { economics: 3, business: 3 } },
+      { label: 'فصل الصلاحيات وتعديل الهيكلية الهندسية للمشروع ليعمل كل قسم باستقلالية.', traits: { film: 2, arts: 2, media: 2 } },
+    ]
+  },
+
+  // ----------------------------------------------------
+  // الفئة 3: اتخاذ القرار والتضحية (11 - 14)
+  // ----------------------------------------------------
+  {
+    text: 'لديك ميزانية محدودة لإطلاق تطبيق ذكي جديد، ما الجانب الذي يستحيل أن تضحي به؟',
+    options: [
+      { label: 'قوة البنية التحتية والأكواد، لضمان معالجة البيانات بكفاءة وبدون أخطاء.', traits: { cs_soft: 3, cs_ai: 2 } },
+      { label: 'أنظمة التشفير والأمن السيبراني، لحماية بيانات المستخدمين من الاختراق.', traits: { cs_cyber: 3, security: 2 } },
+      { label: 'واجهات المستخدم والتصميم البصري، لضمان تجربة ممتعة وجذابة للمستخدم.', traits: { design: 3, marketing: 2 } },
+      { label: 'دراسة السوق والجدوى المالية، للتأكد من قدرة المشروع على تحقيق أرباح.', traits: { business: 3, economics: 3 } },
     ]
   },
   {
-    step: 'السؤال العاشر من خمسة عشر',
-    text: 'أُتيحت لك ساعة إضافية كل يوم لتتعلم شيئاً جديداً تماماً، ماذا تختار؟',
+    text: 'لو كنت مديراً لمستشفى وواجهت عجزاً مالياً، ما القسم الذي تدعمه أولاً؟',
     options: [
-      { label: 'لغة برمجة أو أداة تقنية جديدة', traits: { cs_soft:3, cs_ai:3, cs_cyber:2 } },
-      { label: 'لغة إنسانية جديدة أو مهارة في الكتابة أو الخطابة', traits: { arts:3, law:3, media:2 } },
-      { label: 'موضوع علمي كالفلك أو علم الأعصاب أو الكيمياء', traits: { science:3, medicine:3, eng_chem:2 } },
-      { label: 'مهارة عملية كالنجارة أو الرسم المعماري أو الإلكترونيات', traits: { eng_mech:3, eng_arch:3, cs_hw:2, eng_elec:2 } },
+      { label: 'أجهزة غرف العمليات والتدخل الجراحي المباشر لإنقاذ حياة المرضى.', traits: { medicine: 3, dentistry: 2, nursing: 2 } },
+      { label: 'المختبرات الطبية والصيدلانية، لأن التشخيص الدقيق والوصول للدواء أساس العلاج.', traits: { med_lab: 3, pharmacy: 3, biotech: 2 } },
+      { label: 'قسم التغذية السريرية والصحة الوقائية لحماية المرضى وتقليل أعباء العلاج.', traits: { nutrition: 3, eng_food: 2 } },
+      { label: 'منظومة العلاقات العامة والإعلام الطبي لجذب المتبرعين وبناء الشراكات.', traits: { media: 3, arts: 2, marketing: 2 } },
     ]
   },
   {
-    step: 'السؤال الحادي عشر من خمسة عشر',
-    text: 'منحتك جهةٌ ما مبلغاً كافياً لتبدأ مشروعاً تختاره أنت، ماذا تفعل؟',
+    text: 'عند التخطيط لمدينة جديدة، ما الجانب الذي ترفض التضحية بميزانيته؟',
     options: [
-      { label: 'أبني تطبيقاً أو منصة رقمية تحل مشكلة يعاني منها كثيرون', traits: { cs_soft:3, cs_ai:3, business:2 } },
-      { label: 'أؤسس عيادة أو مشروعاً صحياً يخدم مجتمعاً يفتقر للرعاية', traits: { medicine:3, pharmacy:3, social:2 } },
-      { label: 'أنشئ استوديو إبداعي أو وسيلة إعلامية تنتج محتوى يؤثر في الناس', traits: { media:3, arts:3, design:2 } },
-      { label: 'أستثمره في مشروع تجاري أو عقاري يمكن أن يتوسع مستقبلاً', traits: { business:3, economics:3, eng_civil:2 } },
+      { label: 'المتانة الهندسية للجسور، الطرق، وشبكات البنية التحتية لحماية الأرواح.', traits: { eng_civil: 3, space: 1 } },
+      { label: 'المساحات الخضراء، المحميات، وأنظمة التدوير للحفاظ على البيئة والاستدامة.', traits: { eng_environ: 3, agriculture: 3, science: 1 } },
+      { label: 'التخطيط العمراني الجمالي وتناسق الواجهات التي تمنح المدينة هويتها المعمارية.', traits: { eng_arch: 3, design: 2 } },
+      { label: 'المرافق السياحية وأماكن الضيافة والمطاعم لضمان عوائد اقتصادية قوية.', traits: { hotel: 3, culinary: 2, business: 2 } },
     ]
   },
   {
-    step: 'السؤال الثاني عشر من خمسة عشر',
-    text: 'عرضت عليك شركة عمل وعليك الاختيار بين هذه البيئات، أيها تفضّل؟',
+    text: 'إذا كنت تختار بين عدة مشاريع بحثية "صناعية ومستقبلية" لتمويلها، أيها تراه الأحق بالدعم؟',
     options: [
-      { label: 'مكتب هادئ أعمل فيه بشكل مستقل معظم الوقت على مشاريع تقنية', traits: { cs_soft:3, cs_ai:3, science:3 } },
-      { label: 'بيئة ميدانية أتنقل فيها وأرى نتائج عملي على أرض الواقع', traits: { eng_civil:3, eng_mech:3, medicine:3 } },
-      { label: 'بيئة ديناميكية أتعامل فيها مع الناس وأتفاوض وأقنع يومياً', traits: { business:3, law:3, media:3 } },
-      { label: 'استوديو إبداعي أصمم فيه وأنتج محتوى أو مواد بصرية', traits: { design:3, eng_arch:3, arts:3 } },
+      { label: 'تطوير تقنيات التعديل الجيني الحيوي لإنتاج مواد وخامات صناعية متطورة.', traits: { biotech: 3, science: 3 } },
+      { label: 'هندسة مركبات الفضاء وتحديث أنظمة الملاحة الكونية لاستكشاف عوالم جديدة.', traits: { space: 3, eng_mech: 2, eng_elec: 2 } },
+      { label: 'أبحاث الذكاء الاصطناعي الأمني لتطوير تكنولوجيا التحقيق الجنائي وحماية المنشآت.', traits: { criminology: 3, security: 3, law: 2 } },
+      { label: 'تطوير منصات التعليم الرقمي التفاعلي وتحديث النظم التربوية لبناء مهارات المستقبل.', traits: { education: 3, sociology: 2, social: 2 } },
+    ]
+  },
+
+  // ----------------------------------------------------
+  // الفئة 4: أسلوب الانتباه والتركيز (15 - 17)
+  // ----------------------------------------------------
+  {
+    text: 'عندما تبدأ في تعلم موضوع جديد تماماً، ما أول ما يلفت انتباهك؟',
+    options: [
+      { label: 'المعادلات، الأرقام، والنظريات الرياضية وكيفية إثباتها علمياً وتجريبياً.', traits: { science: 3, cs_ai: 3, economics: 2 } },
+      { label: 'الأسلوب اللغوي، دقة الصياغة، والعمق الأدبي أو الفلسفي وراء النصوص.', traits: { arts: 3, media: 2, education: 2 } },
+      { label: 'التطبيقات الصناعية أو البرمجية المباشرة: كيف أحول هذا المفهوم لمنتج أو كود؟', traits: { cs_soft: 3, eng_mech: 3, eng_chem: 2 } },
+      { label: 'التاريخ الإنساني والاجتماعي المرتبط به، وتأثيره على تطور المجتمعات.', traits: { sociology: 3, social: 2, law: 2 } },
     ]
   },
   {
-    step: 'السؤال الثالث عشر من خمسة عشر',
-    text: 'شاهدت فيلماً وثائقياً أثار إعجابك، ما موضوعه الأرجح؟',
+    text: 'إذا كنت تتابع مؤتمراً لشركة تكنولوجية تكشف منتجاً جديداً، أين يتجه تركيزك؟',
     options: [
-      { label: 'قصة بناء ناطحة سحاب أو جسر ضخم أو مدينة مستدامة', traits: { eng_civil:3, eng_arch:3, eng_mech:2 } },
-      { label: 'كيف تعمل الخوارزميات أو تطور الذكاء الاصطناعي وتأثيره', traits: { cs_ai:3, cs_soft:3, cs_cyber:2, science:2 } },
-      { label: 'قصة مريض خاض رحلة علاجية صعبة أو اكتشاف دواء جديد', traits: { medicine:3, pharmacy:3, social:2 } },
-      { label: 'تحقيق في قضية فساد أو ظلم اجتماعي أو صراع سياسي', traits: { law:3, media:3, social:3 } },
+      { label: 'المواصفات العتادية (Hardware) وتصميم المعالجات والدوائر الإلكترونية الدقيقة.', traits: { cs_hw: 3, eng_elec: 3 } },
+      { label: 'الأسلوب التسويقي، تصميم واجهات المستخدم، وتأثير الحملة على مشاعر الجمهور.', traits: { marketing: 3, design: 3, media: 2 } },
+      { label: 'التأثير الصحي والمأمونية الحيوية للمواد المستخدمة في المنتج على الإنسان.', traits: { biotech: 2, pharmacy: 2, nutrition: 2, med_lab: 2 } },
+      { label: 'العمليات اللوجستية، تصميم خطوط الإنتاج الكبرى، والهندسة الكيميائية للمصانع.', traits: { eng_chem: 3, eng_food: 2, business: 1 } },
     ]
   },
   {
-    step: 'السؤال الرابع عشر من خمسة عشر',
-    text: 'طُلب منك قضاء أسبوع في التطوع، أي هذه الفرص تجذبك أكثر؟',
+    text: 'عندما تقرأ عن نجاح مشروع عالمي ضخم (كالفنادق أو المطاعم)، ما الذي يشغل تفكيرك؟',
     options: [
-      { label: 'تعليم الأطفال في منطقة نائية أو مساعدة ذوي الاحتياجات الخاصة', traits: { social:3, medicine:2, arts:2 } },
-      { label: 'المشاركة في مشروع بناء أو إعادة تأهيل منشآت', traits: { eng_civil:3, eng_mech:3, eng_arch:2 } },
-      { label: 'إنتاج محتوى توعوي أو توثيق قضية مجتمعية وإيصالها للناس', traits: { media:3, arts:3, law:2 } },
-      { label: 'تطوير تطبيق أو نظام رقمي يحل مشكلة في المجتمع', traits: { cs_soft:3, cs_ai:3, business:2 } },
+      { label: 'هندسة الغذاء المتبعة، معايير الجودة الصارمة، وفنون الطهى التي تميزهم.', traits: { eng_food: 3, culinary: 3, nutrition: 1 } },
+      { label: 'آليات إدارة الضيافة، تدريب الموظفين، وتشغيل الفنادق والمرافق الفاخرة.', traits: { hotel: 3, business: 3 } },
+      { label: 'الخوارزميات البرمجية لإدارة الطلبات، وتحليل بيانات العملاء للتنبؤ بسلوكهم.', traits: { cs_ai: 3, cs_soft: 2 } },
+      { label: 'العقود القانونية الحصرية، وحماية الملكية الفكرية والسياسات العامة.', traits: { law: 3, marketing: 2 } },
+    ]
+  },
+
+  // ----------------------------------------------------
+  // الفئة 5: نوع المحتوى المفضل ومحاور الاهتمام الذهني (18 - 20)
+  // ----------------------------------------------------
+  {
+    text: 'إذا كنت تتابع منصات المحتوى (يوتيوب، بودكاست، وثائقيات)، ما نوع المحتوى الذي يشدك تلقائياً؟',
+    options: [
+      { label: 'الشروحات التقنية، حلول التحديات البرمجية، وأحدث الأدوات الرقمية والعلمية.', traits: { cs_soft: 3, cs_ai: 3, cs_cyber: 3, science: 3 } },
+      { label: 'صناعة الضيافة العالمية، تقييم المطاعم الفاخرة، والوجهات السياحية الكبرى.', traits: { culinary: 3, hotel: 3, business: 2 } },
+      { label: 'تحليل الأفلام والسينما، أسرار الإخراج والإنتاج، والقصص الأدبية المعقدة.', traits: { film: 3, design: 2, arts: 3, media: 2 } },
+      { label: 'الحوارات الفكرية والسياسية، وتحليل الظواهر السلوكية والتاريخية للمجتمعات.', traits: { social: 2, sociology: 3, law: 2 } },
     ]
   },
   {
-    step: 'السؤال الخامس عشر من خمسة عشر',
-    text: 'لو اخترت بين هذه البيئات للعمل فيها طوال مسيرتك، أيها تتحمل أصعب لحظاتها دون أن تفكر في الاستقالة؟',
+    text: 'في أوقات الملل، ما التحدي الذي تختار القيام به لإثارة حماسك؟',
     options: [
-      { label: 'مختبر أو شركة تقنية — ساعات طويلة أمام الشاشة وحيداً أحل مشكلات لا أحد يراها', traits: { cs_ai:3, cs_cyber:3, science:3, cs_soft:2 } },
-      { label: 'موقع بناء أو غرفة عمليات — ضغط ميداني وقرارات لحظية ونتائج مباشرة على أرض الواقع', traits: { eng_civil:3, eng_mech:3, medicine:3, eng_arch:2 } },
-      { label: 'قاعة محكمة أو اجتماع مفاوضات — كلام وحجج وضغط نفسي ونتيجتها تتوقف على من يُقنع', traits: { law:3, business:3, media:2 } },
-      { label: 'استوديو أو مكتب تحرير — مواعيد نهائية ضيقة وإنتاج مستمر وكل شيء يُحكم عليه بصرياً أو أسلوبياً', traits: { design:3, arts:3, media:3, eng_arch:1 } },
+      { label: 'تفكيك جهاز إلكتروني أو ميكانيكي قديم لإصلاحه وفهم طريقة عمله.', traits: { eng_mech: 3, cs_hw: 3, eng_elec: 2 } },
+      { label: 'التطوع في عيادة طبية أو الإشراف على رعاية صحية وغذائية لمن يحتاجها.', traits: { medicine: 2, nursing: 3, nutrition: 2, dentistry: 2 } },
+      { label: 'تصميم هوية بصرية كاملة لشركة، أو تحرير ومونتاج فيديو إبداعي قصير.', traits: { design: 3, film: 3, marketing: 2 } },
+      { label: 'المشاركة في الألعاب الاستراتيجية التي تتطلب خططاً أمنية واستخباراتية.', traits: { security: 3, criminology: 2, space: 1 } },
     ]
   },
+  {
+    text: 'أي من المجالات التالية تجد نفسك شغوفاً بمتابعة أخباره وتطوراته العالمية باستمرار؟',
+    options: [
+      { label: 'علم النفس الاجتماعي، تفاعلات السلوك البشري، وطرق تطوير التعليم والمجتمعات.', traits: { social: 3, sociology: 3, education: 2 } },
+      { label: 'فنون التصميم الداخلي، هندسة الديكورات، وتنظيم المساحات المعمارية والضيافة.', traits: { culinary: 2, hotel: 3, eng_arch: 2 } },
+      { label: 'أخبار الاستثمار العالمي، ريادة الأعمال، وتحليلات الأسواق المالية والتكنولوجية.', traits: { cs_ai: 2, business: 3, economics: 2 } },
+      { label: 'أبحاث البيئة والاستدامة، علوم الطبيعة المفتوحة، وتكنولوجيا الطيران والفضاء.', traits: { space: 3, eng_environ: 2, agriculture: 2, science: 1 } },
+    ]
+  }
 ];
 
-/* ===== الحالة ===== */
+/* ===== منطق الواجهة والكود  ===== */
 const rankEmojis = ['🥇','🥈','🥉','4️⃣','5️⃣'];
 let current = 0;
 let answers = {};
-let lastResults = null; // أحدث نتائج محسوبة
 
-/* ===== بداية التطبيق ===== */
 window._onFirebaseReady = function(user) {
   document.getElementById('loadingScreen').style.display = 'none';
-
   if (user) {
-    // مستخدم مسجل — تحقق من الاختبارات السابقة
     loadPastQuizzes(user).then(quizzes => {
-      if (quizzes.length > 0) {
-        showPastResults(quizzes);
-      } else {
-        document.getElementById('introScreen').style.display = 'block';
-      }
+      if (quizzes.length > 0) showPastResults(quizzes);
+      else document.getElementById('introScreen').style.display = 'block';
     });
   } else {
-    // غير مسجل
     document.getElementById('introScreen').style.display = 'block';
   }
 };
-
-// في حال تأخر Firebase
 setTimeout(() => {
   if (!window._firebaseReady) {
     document.getElementById('loadingScreen').style.display = 'none';
@@ -672,92 +665,55 @@ setTimeout(() => {
   }
 }, 3000);
 
-/* ===== Firestore: حفظ وتحميل الاختبارات ===== */
 async function saveQuizResult(results) {
   try {
     const user = window._currentUser;
     if (!user) return;
     const { collection, addDoc, serverTimestamp } = window._firestoreFns;
-    const db = window._db;
-    const colRef = collection(db, 'users', user.uid, 'quizResults');
-    await addDoc(colRef, {
-      results: results,
-      createdAt: serverTimestamp()
+    await addDoc(collection(window._db, 'users', user.uid, 'quizResults'), {
+      results, createdAt: serverTimestamp()
     });
     const notice = document.getElementById('saveNotice');
-    notice.textContent = 'تم حفظ نتائجك تلقائياً في حسابك.';
+    notice.textContent = 'تم حفظ نتائجك تلقائياً في حسابك الشقسي.';
     notice.style.display = 'block';
-  } catch (e) {
-    console.warn('لم يتم حفظ النتائج:', e);
-  }
+  } catch(e) { console.warn('لم يتم حفظ النتائج:', e); }
 }
 
 async function loadPastQuizzes(user) {
   try {
     const { collection, getDocs, query, orderBy, limit } = window._firestoreFns;
-    const db = window._db;
-    const q = query(
-      collection(db, 'users', user.uid, 'quizResults'),
-      orderBy('createdAt', 'desc'),
-      limit(10)
-    );
+    const q = query(collection(window._db, 'users', user.uid, 'quizResults'), orderBy('createdAt','desc'), limit(10));
     const snap = await getDocs(q);
     const out = [];
-    snap.forEach(doc => {
-      const data = doc.data();
-      out.push({
-        id: doc.id,
-        results: data.results,
-        createdAt: data.createdAt
-      });
-    });
+    snap.forEach(doc => { const d = doc.data(); out.push({ id: doc.id, results: d.results, createdAt: d.createdAt }); });
     return out;
-  } catch (e) {
-    console.warn('لم يتم تحميل الاختبارات:', e);
-    return [];
-  }
+  } catch(e) { console.warn('لم يتم التحميل:', e); return []; }
 }
 
-/* ===== عرض الاختبارات السابقة ===== */
 function showPastResults(quizzes) {
   hideAllScreens();
-  const screen = document.getElementById('pastResultsScreen');
-  screen.style.display = 'block';
-
-  if (!quizzes) {
-    // تحميل من Firebase
-    loadPastQuizzes(window._currentUser).then(q => renderPastList(q));
-  } else {
-    renderPastList(quizzes);
-  }
+  document.getElementById('pastResultsScreen').style.display = 'block';
+  if (!quizzes) loadPastQuizzes(window._currentUser).then(renderPastList);
+  else renderPastList(quizzes);
 }
 
 function renderPastList(quizzes) {
   const list = document.getElementById('pastQuizList');
   list.innerHTML = '';
-
   if (!quizzes || quizzes.length === 0) {
     list.innerHTML = '<p style="text-align:center;color:var(--muted);">لا توجد اختبارات سابقة.</p>';
     return;
   }
-
   quizzes.forEach((quiz, idx) => {
     const card = document.createElement('div');
     card.className = 'past-quiz-card';
-
     const top = quiz.results[0];
-    const others = quiz.results.slice(1, 3).map(r => majors[r.key]?.name).filter(Boolean).join('، ');
-
+    const others = quiz.results.slice(1,3).map(r => majors[r.key]?.name).filter(Boolean).join('، ');
     let dateStr = '';
-    if (quiz.createdAt && quiz.createdAt.toDate) {
-      const d = quiz.createdAt.toDate();
-      dateStr = d.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-    } else if (quiz.createdAt) {
-      dateStr = new Date(quiz.createdAt).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
-
+    if (quiz.createdAt?.toDate) dateStr = quiz.createdAt.toDate().toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'});
+    else if (quiz.createdAt) dateStr = new Date(quiz.createdAt).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'});
     card.innerHTML = `
-      <div class="quiz-date">${dateStr ? 'اختبار بتاريخ ' + dateStr : 'اختبار ' + (idx + 1)}</div>
+      <div class="quiz-date">${dateStr ? 'اختبار بتاريخ ' + dateStr : 'اختبار ' + (idx+1)}</div>
       <div class="quiz-top">الأول: ${majors[top?.key]?.name || '—'} — ${top?.pct || 0}%</div>
       ${others ? '<div class="quiz-others">يليه: ' + others + '</div>' : ''}
     `;
@@ -773,10 +729,8 @@ function showPastSingle(quiz, dateStr) {
   renderMajorsList(document.getElementById('pastSingleList'), quiz.results);
 }
 
-/* ===== منطق الاختبار ===== */
 function startQuiz() {
-  current = 0;
-  answers = {};
+  current = 0; answers = {};
   hideAllScreens();
   document.getElementById('quizScreen').style.display = 'block';
   renderQuestion();
@@ -784,32 +738,23 @@ function startQuiz() {
 
 function hideAllScreens() {
   ['loadingScreen','introScreen','pastResultsScreen','pastSingleScreen','quizScreen','resultsScreen']
-    .forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
+    .forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
 }
 
-function getSelected() {
-  return answers[current] || new Set();
-}
+function getSelected() { return answers[current] || new Set(); }
 
 function renderQuestion() {
   const q = questions[current];
   const pct = (current / questions.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = `السؤال ${arabicNum(current + 1)} من ${arabicNum(questions.length)}`;
-  document.getElementById('qStep').textContent = q.step;
+  document.getElementById('progressLabel').textContent = `السؤال ${arabicNum(current+1)} من ${arabicNum(questions.length)}`;
+  document.getElementById('qStep').textContent = `السؤال ${arabicNum(current+1)} من ${arabicNum(questions.length)}`;
   document.getElementById('qText').textContent = q.text;
-
   const card = document.getElementById('questionCard');
   card.style.animation = 'none'; card.offsetHeight; card.style.animation = '';
-
   renderOptions();
-
   document.getElementById('prevBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
-  const isLast = current === questions.length - 1;
-  document.getElementById('nextBtn').textContent = isLast ? 'عرض النتائج' : 'التالي';
+  document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'عرض النتائج' : 'التالي';
   updateNextBtn();
 }
 
@@ -824,27 +769,14 @@ function renderOptions() {
   const maxReached = selected.size >= MAX_SELECT;
   const list = document.getElementById('optionsList');
   list.innerHTML = '';
-
   q.options.forEach((opt, i) => {
     const isSelected = selected.has(i);
     const btn = document.createElement('button');
-    let cls = 'option-btn';
-    if (isSelected) cls += ' selected';
-    else if (maxReached) cls += ' dimmed';
-    btn.className = cls;
-
-    const box = document.createElement('span');
-    box.className = 'check-box';
-
-    const txt = document.createElement('span');
-    txt.textContent = opt.label;
-
-    btn.appendChild(box);
-    btn.appendChild(txt);
-
-    if (!maxReached || isSelected) {
-      btn.onclick = () => toggleOption(i);
-    }
+    btn.className = 'option-btn' + (isSelected ? ' selected' : (maxReached ? ' dimmed' : ''));
+    const box = document.createElement('span'); box.className = 'check-box';
+    const txt = document.createElement('span'); txt.textContent = opt.label;
+    btn.appendChild(box); btn.appendChild(txt);
+    if (!maxReached || isSelected) btn.onclick = () => toggleOption(i);
     list.appendChild(btn);
   });
 }
@@ -858,29 +790,22 @@ function toggleOption(i) {
   updateNextBtn();
 }
 
-function updateNextBtn() {
-  document.getElementById('nextBtn').disabled = getSelected().size === 0;
-}
+function updateNextBtn() { document.getElementById('nextBtn').disabled = getSelected().size === 0; }
+function nextQuestion() { if (getSelected().size === 0) return; if (current < questions.length-1) { current++; renderQuestion(); } else showResults(); }
+function prevQuestion() { if (current > 0) { current--; renderQuestion(); } }
 
-function nextQuestion() {
-  if (getSelected().size === 0) return;
-  if (current < questions.length - 1) { current++; renderQuestion(); }
-  else showResults();
-}
-
-function prevQuestion() {
-  if (current > 0) { current--; renderQuestion(); }
-}
-
-/* ===== حساب النتائج ===== */
+/* ===== الحساب العادل للنتائج الصافية (تعديل عمرو الرياضي) ===== */
 function computeResults() {
   const scores = {};
-  Object.keys(majors).forEach(k => scores[k] = 0);
+  const maxPerMajor = {};
 
+  Object.keys(majors).forEach(k => { scores[k] = 0; maxPerMajor[k] = 0; });
+
+  // 1. حساب النقاط المكتسبة وزناً
   questions.forEach((q, qi) => {
     const sel = answers[qi];
     if (!sel || sel.size === 0) return;
-    const weight = sel.size === 1 ? 1 : 0.65;
+    const weight = sel.size === 1 ? 1.0 : 0.65;
     sel.forEach(ai => {
       Object.entries(q.options[ai].traits).forEach(([k, v]) => {
         if (scores[k] !== undefined) scores[k] += v * weight;
@@ -888,31 +813,46 @@ function computeResults() {
     });
   });
 
-  const maxPossible = questions.length * 3;
+  // 2. حساب السقف الأعلى الممكن الصافي لكل تخصص في مجمل الاختبار
+  questions.forEach(q => {
+    const bestForThisQuestion = {};
+    q.options.forEach(opt => {
+      Object.entries(opt.traits).forEach(([k, v]) => {
+        if (v > 0) {
+          if (bestForThisQuestion[k] === undefined || v > bestForThisQuestion[k]) {
+            bestForThisQuestion[k] = v;
+          }
+        }
+      });
+    });
+    Object.entries(bestForThisQuestion).forEach(([k, v]) => {
+      if (maxPerMajor[k] !== undefined) maxPerMajor[k] += v;
+    });
+  });
+
+  // 3. النسبة المئوية الصافية العادلة
   const pcts = {};
   Object.keys(scores).forEach(k => {
-    pcts[k] = Math.min(100, Math.round((scores[k] / maxPossible) * 100));
+    if (maxPerMajor[k] > 0 && scores[k] > 0) {
+      pcts[k] = Math.min(100, Math.round((scores[k] / maxPerMajor[k]) * 100));
+    } else {
+      pcts[k] = 0;
+    }
   });
 
   return Object.entries(pcts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([key, pct]) => ({ key, pct }));
+    .sort((a,b) => b[1]-a[1])
+    .slice(0,5)
+    .map(([key,pct]) => ({ key, pct }));
 }
 
 function showResults() {
-  lastResults = computeResults();
-
+  const res = computeResults();
   hideAllScreens();
   document.getElementById('resultsScreen').style.display = 'block';
   document.getElementById('saveNotice').style.display = 'none';
-
-  renderMajorsList(document.getElementById('majorsList'), lastResults);
-
-  // حفظ في Firebase إن كان المستخدم مسجلاً
-  if (window._currentUser) {
-    saveQuizResult(lastResults);
-  }
+  renderMajorsList(document.getElementById('majorsList'), res);
+  if (window._currentUser) saveQuizResult(res);
 }
 
 function renderMajorsList(container, results) {
@@ -939,7 +879,6 @@ function renderMajorsList(container, results) {
     `;
     container.appendChild(card);
   });
-
   setTimeout(() => {
     container.querySelectorAll('.pct-bar-fill').forEach(bar => {
       bar.style.width = bar.dataset.pct + '%';
@@ -948,16 +887,13 @@ function renderMajorsList(container, results) {
 }
 
 function goToScholarships() { window.location.href = 'scholarships.html'; }
-
 function restartQuiz() {
-  current = 0;
-  answers = {};
+  current = 0; answers = {};
   hideAllScreens();
   document.getElementById('introScreen').style.display = 'block';
 }
 </script>
 
 <script type="module" src="/static/js/auth-state.js"></script>
-
 </body>
 </html>
