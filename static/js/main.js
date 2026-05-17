@@ -1,3 +1,5 @@
+import { isFavorite, toggleFavorite, onFavoritesChange } from '/static/js/favorites.js';
+
 //عداد الوقت المتبقي لانتهاء المنحة
 function getCountdown(deadline) {
   const today = new Date();
@@ -10,8 +12,18 @@ function getCountdown(deadline) {
   return { text: `📅 باقي ${diff} يوم على إغلاق التقديم`, urgent: false };
 }
 
+// كلما تغيّرت المفضلة، حدّث أيقونات القلب في الصفحة الرئيسية
+onFavoritesChange(() => {
+  document.querySelectorAll('.fav-btn').forEach(btn => {
+    const id = btn.dataset.id;
+    const active = isFavorite(id);
+    btn.classList.toggle('active', active);
+    const icon = btn.querySelector('i');
+    if (icon) icon.className = active ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+  });
+});
 
-//جلب البيانات وعرضها
+//جلب البيانات وعرضها (scholarships-grid - غير مستخدم في الرئيسية لكن نحتفظ به)
 fetch('data/scholarships.json')
   .then(res => res.json())
   .then(scholarships => {
@@ -21,7 +33,6 @@ fetch('data/scholarships.json')
     scholarships.forEach(s => {
       const card = document.createElement('div');
       card.className = 'card';
-
       card.innerHTML = `
         <img class="card-flag" src=${s.flag} alt="flag"/>
         <h3>${s.name}</h3>
@@ -34,12 +45,12 @@ fetch('data/scholarships.json')
         <a href="scholarship.html?id=${s.id}" class="btn-details">تفاصيل المنحة كاملة ←</a>
         <a href="${s.link}" target="_blank">زيارة الموقع الرسمي ↗</a>
       `;
-
       grid.appendChild(card);
     });
   })
   .catch(err => console.error('خطأ في تحميل المنح:', err));
 
+// skeleton loading
 const grid = document.getElementById('open-scholarships-grid');
 if (grid) {
   for (let i = 0; i < 4; i++) {
@@ -56,14 +67,13 @@ if (grid) {
   }
 }
 
-  fetch('data/scholarships.json?v=' + Date.now())
+// المنح المتاحة حالياً
+fetch('data/scholarships.json?v=' + Date.now())
   .then(res => res.json())
   .then(scholarships => {
     const grid = document.getElementById('open-scholarships-grid');
-    if (!grid) return
+    if (!grid) return;
     grid.innerHTML = '';
-   
-
 
     const openOnly = scholarships.filter(s => s.open === true);
 
@@ -77,9 +87,16 @@ if (grid) {
         ? `<img class="card-flag" src="${s.flag}" alt="flag"/>`
         : `<span class="card-flag" style="font-size:40px; line-height:1; display:block; margin-bottom:10px;">${s.flag || ''}</span>`;
 
+      const active = isFavorite(s.id);
+      const cd = getCountdown(s.deadline);
+
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
+        <button class="fav-btn ${active ? 'active' : ''}" data-id="${s.id}"
+          aria-label="${active ? 'إزالة من المفضلة' : 'إضافة للمفضلة'}">
+          <i class="${active ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+        </button>
         ${flagHtml}
         <h3>${s.name}</h3>
         <p class="country">📍 ${s.country}</p>
@@ -87,21 +104,30 @@ if (grid) {
         <span class="status open">✅ التقديم مفتوح</span>
         <p class="desc">${s.description || ''}</p>
         ${s.open_date ? `<p class="deadline">📅 موعد فتح التقديم: ${s.open_date}</p>` : ''}
-        ${(() => {
-        const cd = getCountdown(s.deadline);
-        return cd ? `<div class="countdown ${cd.urgent ? 'urgent' : ''}">${cd.text}</div>` : '';
-        })()}
+        ${cd ? `<div class="countdown ${cd.urgent ? 'urgent' : ''}">${cd.text}</div>` : ''}
         <p class="deadline">📅 آخر موعد للتقديم: ${s.deadline}</p>
         <a href="scholarship.html?id=${s.id}" class="btn-details" style="background:white; color:#ff4500; border:none;">تفاصيل المنحة كاملة ←</a>
         <a href="${s.link}" target="_blank" class="btn-details" style="background:white; color:#ff4500; border:none;">زيارة الموقع الرسمي ↗</a>
         <a class="btn-details" style="background:white; color:#ff4500; border:none; cursor:pointer;" onclick="shareScholarship('${s.id}', '${s.name}', '${s.country}')">📤 شارك المنحة</a>
       `;
+
+      // حدث القلب
+      card.querySelector('.fav-btn').addEventListener('click', async function (e) {
+        e.stopPropagation();
+        const nowActive = await toggleFavorite(this.dataset.id);
+        if (nowActive === false && !isFavorite(this.dataset.id)) return; // منع التحديث لو ما سجّل دخول
+        this.classList.toggle('active', nowActive);
+        const icon = this.querySelector('i');
+        if (icon) icon.className = nowActive ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+      });
+
       grid.appendChild(card);
       setTimeout(() => card.classList.add('visible'), 100);
     });
   })
   .catch(err => console.error('خطأ:', err));
-  window.addEventListener('scroll', () => {
+
+window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) {
     header.classList.add('scrolled');
@@ -110,49 +136,41 @@ if (grid) {
   }
 });
 
-//الدالة التي تشغل زر شارك المنحة في خانة المنح المفتوحة
-function shareScholarship(id, name, country) {
+// زر شارك المنحة
+window.shareScholarship = function (id, name, country) {
   const url = `${window.location.origin}/scholarship/${id}`;
   const text = `🎓 ${name}\n`;
-
   if (navigator.share) {
     navigator.share({ title: `منحة ${name}`, text, url });
   } else {
     navigator.clipboard.writeText(text + '\n' + url);
     alert('✅ تم نسخ رابط المنحة!');
   }
-}
+};
 
-//قائمة المنيو
-function toggleMenu() {
+// قائمة المنيو
+window.toggleMenu = function () {
   const nav = document.getElementById('main-nav');
   nav.classList.toggle('open');
-}
+};
 
 // زر العودة للأعلى
 const btn = document.createElement('button');
 btn.id = 'back-to-top';
 btn.innerHTML = '↑';
 document.body.appendChild(btn);
-
-btn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // أنيميشن السكرول
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1 });
 
 window.addEventListener('scroll', () => {
-  // زر العودة
   btn.style.display = window.scrollY > 300 ? 'block' : 'none';
 
-  // إخفاء الهيدر
   const header = document.querySelector('header');
   if (window.scrollY > 80) {
     header.style.transform = 'translateY(-100%)';
@@ -160,27 +178,24 @@ window.addEventListener('scroll', () => {
     header.style.transform = 'translateY(0)';
   }
 
-  // أنيميشن الكروت
   document.querySelectorAll('.card, .about-card').forEach(card => {
     observer.observe(card);
   });
 });
 
-// ازرار التمرير الافقي
-function slideCards(direction) {
+// ازرار التمرير الأفقي
+window.slideCards = function (direction) {
   const grid = document.getElementById('open-scholarships-grid');
   const card = grid.querySelector('.card');
   if (!card) return;
   const cardWidth = card.offsetWidth + 20;
   grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-}
+};
 
-// للتمرير بالماوس افقيا
+// التمرير بالماوس أفقياً
 const dragGrid = document.getElementById('open-scholarships-grid');
 if (dragGrid) {
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  let isDown = false, startX, scrollLeft;
 
   dragGrid.addEventListener('mousedown', e => {
     isDown = true;
@@ -188,22 +203,12 @@ if (dragGrid) {
     startX = e.pageX - dragGrid.offsetLeft;
     scrollLeft = dragGrid.scrollLeft;
   });
-
-  dragGrid.addEventListener('mouseleave', () => {
-    isDown = false;
-    dragGrid.style.cursor = 'grab';
-  });
-
-  dragGrid.addEventListener('mouseup', () => {
-    isDown = false;
-    dragGrid.style.cursor = 'grab';
-  });
-
+  dragGrid.addEventListener('mouseleave', () => { isDown = false; dragGrid.style.cursor = 'grab'; });
+  dragGrid.addEventListener('mouseup', () => { isDown = false; dragGrid.style.cursor = 'grab'; });
   dragGrid.addEventListener('mousemove', e => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - dragGrid.offsetLeft;
-    const walk = (x - startX) *3;
-    dragGrid.scrollLeft = scrollLeft - walk;
+    dragGrid.scrollLeft = scrollLeft - (x - startX) * 3;
   });
 }

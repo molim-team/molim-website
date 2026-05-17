@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-0VET8JF7N5');
 </script>
   <meta charset="UTF-8" />
@@ -20,16 +19,73 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <style>
+    /* ===== زر القلب ===== */
+    .card { position: relative; }
+
+    .fav-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: #ccc;
+      transition: color 0.2s, transform 0.15s;
+      padding: 4px;
+      z-index: 2;
+      line-height: 1;
+    }
+    .fav-btn:hover { transform: scale(1.2); }
+    .fav-btn.active { color: #e84545; }
+    .fav-btn i { pointer-events: none; }
+
+    /* ===== تابات جميع / مفضلة ===== */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 24px auto 0;
+      max-width: 400px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: 2px solid var(--primary, #4f46e5);
+      background: transparent;
+      color: var(--primary, #4f46e5);
+      border-radius: 30px;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 600;
+    }
+    .tab-btn.tab-active {
+      background: var(--primary, #4f46e5);
+      color: #fff;
+    }
+
+    /* رسالة لا توجد مفضلة */
+    #no-favorites {
+      text-align: center;
+      color: #aaa;
+      margin-top: 40px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 
   <!-- الهيدر -->
-   <header>
-  <div class="logo">
-  <a href="/index.html">
-    <img src="/static/logo.png" alt="مُلم" class="logo-img"/>
-  </a>
-  </div>
+  <header>
+    <div class="logo">
+      <a href="/index.html">
+        <img src="/static/logo.png" alt="مُلم" class="logo-img"/>
+      </a>
+    </div>
     <nav id="main-nav">
       <a href="index.html">الرئيسية</a>
       <a href="scholarships.html">المنح</a>
@@ -54,29 +110,47 @@
     <p>اكتشف المنح المتاحة وتفاصيلها كاملة</p>
   </section>
 
-  <!-- البحث والفلتر -->
-  <section class="filters">
-    <input type="text" id="search" placeholder="🔍 ابحث عن منحة..." />
-    <select id="filter-status">
-      <option value="all">جميع المنح</option>
-      <option value="open">التقديم مفتوح</option>
-      <option value="closed">التقديم مغلق</option>
-    </select>
-    <select id="filter-degree">
-      <option value="all">جميع المراحل</option>
-      <option value="بكالوريوس">بكالوريوس</option>
-      <option value="ماجستير">ماجستير</option>
-      <option value="دكتوراه">دكتوراه</option>
-    </select>
-  </section>
+  <!-- تابات جميع المنح / المفضلة -->
+  <div class="tabs">
+    <button class="tab-btn tab-active" id="tab-all" onclick="showAllScholarships()">📋 جميع المنح</button>
+    <button class="tab-btn" id="tab-fav" onclick="showFavorites()">❤️ المفضلة</button>
+  </div>
 
-  <!-- قائمة المنح -->
-  <section class="featured">
-    <div id="scholarships-grid" class="grid"></div>
-    <p id="no-results" style="display:none; text-align:center; color:#aaa; margin-top:40px;">
-      لا توجد منح تطابق بحثك 😔
-    </p>
-  </section>
+  <!-- ===== قسم جميع المنح ===== -->
+  <div id="all-section">
+    <!-- البحث والفلتر -->
+    <section class="filters">
+      <input type="text" id="search" placeholder="🔍 ابحث عن منحة..." />
+      <select id="filter-status">
+        <option value="all">جميع المنح</option>
+        <option value="open">التقديم مفتوح</option>
+        <option value="closed">التقديم مغلق</option>
+      </select>
+      <select id="filter-degree">
+        <option value="all">جميع المراحل</option>
+        <option value="بكالوريوس">بكالوريوس</option>
+        <option value="ماجستير">ماجستير</option>
+        <option value="دكتوراه">دكتوراه</option>
+      </select>
+    </section>
+
+    <section class="featured">
+      <div id="scholarships-grid" class="grid"></div>
+      <p id="no-results" style="display:none; text-align:center; color:#aaa; margin-top:40px;">
+        لا توجد منح تطابق بحثك 😔
+      </p>
+    </section>
+  </div>
+
+  <!-- ===== قسم المفضلة ===== -->
+  <div id="favorites-section" style="display:none;">
+    <section class="featured">
+      <div id="favorites-grid" class="grid"></div>
+      <p id="no-favorites" style="display:none;">
+        لم تضف أي منحة للمفضلة بعد 💔<br/>اضغط على القلب في أي منحة لحفظها هنا!
+      </p>
+    </section>
+  </div>
 
   <!-- الفوتر -->
   <footer>
@@ -99,13 +173,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-     <p>مُلم © 2026 | جميع الحقوق محفوظة | <a href="/privacy.html" style="color:#ccc;">سياسة الخصوصية</a></p>
+      <p>مُلم © 2026 | جميع الحقوق محفوظة | <a href="/privacy.html" style="color:#ccc;">سياسة الخصوصية</a></p>
     </div>
   </footer>
 
-  <script src="/static/js/scholarships.js"></script>
+  <script type="module" src="/static/js/scholarships.js"></script>
   <script src="/static/js/shared.js"></script>
-
   <script type="module" src="/static/js/auth-state.js"></script>
 
 </body>
