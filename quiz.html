@@ -248,6 +248,7 @@
       <a href="scholarships.html">المنح</a>
       <a href="quiz.html" class="active">اكتشف التخصص المناسب لك</a>
       <a href="faq.html">الأسئلة الشائعة</a>
+      <a href="majors.html">التخصصات العالمية</a>
       <a href="contact.html">تواصل معنا</a>
     </nav>
     <div class="header-left">
@@ -1387,6 +1388,12 @@ function renderMajorsList(container, results) {
         <div class="major-field">${m.field}</div>
         <div class="major-name">${m.name}</div>
         <div class="major-desc">${m.desc}</div>
+        <div style="margin-top:0.6rem; margin-bottom:0.2rem;">
+          <a href="majors.html#${key}" style="font-size:0.8rem; background:rgba(255,69,0,0.08); border:1px solid rgba(255,69,0,0.2); color:var(--primary-color); padding:0.35rem 0.7rem; border-radius:8px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:0.4rem; transition:all 0.2s ease;" onmouseover="this.style.background='rgba(255,69,0,0.15)'" onmouseout="this.style.background='rgba(255,69,0,0.08)'">
+            تفاصيل التخصص
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
         <div class="pct-bar-wrap">
           <div class="pct-bar-fill" style="width:0%" data-pct="${pct}"></div>
         </div>

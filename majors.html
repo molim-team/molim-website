@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0VET8JF7N5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0VET8JF7N5');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="دليل التخصصات العالمية الشامل." />
+  <title>مُلم | التخصصات العالمية</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <style>
+    .major-section-title {
+        color: var(--primary-color, #ff4500);
+        margin-top: 15px;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+    .major-text {
+        color: var(--text-color, #333);
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    .major-list {
+        padding-right: 20px;
+        margin-bottom: 10px;
+        list-style-type: disc;
+    }
+    .major-list li {
+        margin-bottom: 5px;
+        color: var(--text-color, #333);
+        line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الهيدر -->
+   <header>
+  <div class="logo">
+  <a href="/index.html">
+    <img src="/static/logo.png" alt="مُلم" class="logo-img"/>
+  </a>
+  </div>
+    <nav id="main-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="scholarships.html">المنح</a>
+      <a href="quiz.html">اكتشف التخصص المناسب لك</a>
+      <a href="faq.html">الأسئلة الشائعة</a>
+      <a href="majors.html" class="active">التخصصات العالمية</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="/login.html" id="auth-btn">تسجيل الدخول</a>
+    </nav>
+    <div class="header-left">
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- عنوان -->
+  <section class="page-hero">
+    <h1>🌍 دليل التخصصات العالمية</h1>
+    <p>تعرف على تفاصيل ومستقبل أهم التخصصات الأكاديمية والمقومات الأساسية لكل تخصص</p>
+  </section>
+
+  <!-- التخصصات -->
+  <section class="faq-section" id="majors-container">
+      <!-- سيتم تحميل التخصصات هنا ديناميكياً -->
+  </section>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="static/logo.png" alt="مُلم" class="footer-logo"/>
+        <p>منصتك الأولى لاكتشاف المنح الدراسية حول العالم</p>
+      </div>
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="index.html">الرئيسية</a>
+        <a href="scholarships.html">جميع المنح</a>
+        <a href="faq.html">الأسئلة الشائعة</a>
+        <a href="contact.html">تواصل معنا</a>
+      </div>
+      <div class="footer-social">
+        <h4>تواصل معنا</h4>
+        <a href="https://t.me/molim_ContactBot" target="_blank"> الدعم الفني - تليجرام</a>
+        <a href="mailto:molim.team@gmail.com"> molim.team@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>مُلم © 2026 | جميع الحقوق محفوظة | <a href="/privacy.html" style="color:#ccc;">سياسة الخصوصية</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const icon = el.querySelector('.faq-icon');
+      const isOpen = answer.style.maxHeight;
+      document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = '');
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const response = await fetch('data/majors_info.json');
+            const data = await response.json();
+            const container = document.getElementById('majors-container');
+            
+            for (const [key, major] of Object.entries(data)) {
+                // Create accordion item
+                const item = document.createElement('div');
+                item.className = 'faq-item';
+                item.id = key; 
+                
+                const question = document.createElement('div');
+                question.className = 'faq-question';
+                question.onclick = function() { toggleFaq(this); };
+                
+                const title = document.createElement('span');
+                title.textContent = major.name;
+                
+                const icon = document.createElement('span');
+                icon.className = 'faq-icon';
+                icon.textContent = '+';
+                
+                question.appendChild(title);
+                question.appendChild(icon);
+                
+                const answer = document.createElement('div');
+                answer.className = 'faq-answer';
+                
+                // Format the content
+                let answerContent = `
+                    <div style="padding: 15px 0;">
+                        <div class="major-section-title">نظرة عامة</div>
+                        <p class="major-text">${major.overview}</p>
+                        
+                        <div class="major-section-title">المواد الأساسية</div>
+                        <ul class="major-list">
+                            ${major.core_subjects.map(subject => `<li>${subject}</li>`).join('')}
+                        </ul>
+                        
+                        <div class="major-section-title">المهارات المكتسبة</div>
+                        <ul class="major-list">
+                            ${major.skills_acquired.map(skill => `<li>${skill}</li>`).join('')}
+                        </ul>
+                        
+                        <div class="major-section-title">الإيجابيات والسلبيات</div>
+                        <p class="major-text" style="font-weight: bold; margin-bottom: 5px;">الإيجابيات:</p>
+                        <ul class="major-list">
+                            ${major.pros.map(pro => `<li>${pro}</li>`).join('')}
+                        </ul>
+                        <p class="major-text" style="font-weight: bold; margin-bottom: 5px;">السلبيات:</p>
+                        <ul class="major-list">
+                            ${major.cons.map(con => `<li>${con}</li>`).join('')}
+                        </ul>
+                        
+                        <div class="major-section-title">مستقبل السوق</div>
+                        <p class="major-text">${major.market_future}</p>
+                        
+                        <div class="major-section-title">أبرز الوظائف المتاحة</div>
+                        <ul class="major-list" style="margin-bottom: 0;">
+                            ${major.careers.map(career => `<li>${career}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                
+                answer.innerHTML = answerContent;
+                
+                item.appendChild(question);
+                item.appendChild(answer);
+                container.appendChild(item);
+            }
+            
+            // Handle anchor link after rendering
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1); 
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const questionElement = targetElement.querySelector('.faq-question');
+                        if (questionElement) {
+                            toggleFaq(questionElement);
+                        }
+                    }, 500);
+                }
+            }
+        } catch (error) {
+            console.error("Error loading majors:", error);
+            document.getElementById('majors-container').innerHTML = '<p style="text-align:center;color:red;">حدث خطأ أثناء تحميل التخصصات.</p>';
+        }
+    });
+  </script>
+
+  <script src="/static/js/shared.js"></script>
+  <script type="module" src="/static/js/auth-state.js"></script>
+
+</body>
+</html>
